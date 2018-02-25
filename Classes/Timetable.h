@@ -6,8 +6,16 @@
 #define PROJ_ANDROID_STUDIO_TIMETABLE_H
 
 
-class Timetable {
+#include <vector>
 
+class Timetable {
+public:
+    std::vector<Stop> stops;
+
+    Stop invokeNextStop();
+    bool checkNextStop();
+    void prepareNextStop();
+    void removeStop();
 };
 
 
