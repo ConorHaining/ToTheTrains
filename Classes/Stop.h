@@ -7,7 +7,19 @@
 
 
 class Stop {
+private:
 
+    Platform platform;
+    GameTime scheduledArrivalTime;
+    GameTime scheduledDepartureTime;
+    GameTime actualArrivalTime;
+    GameTime actualDepartureTime;
+    Train train;
+    Disruption disruption;
+
+public:
+
+    bool isDisruption();
 };
 
 
