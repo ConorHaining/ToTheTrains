@@ -162,6 +162,7 @@ set(GAME_SRC
         Classes/Timetable.cpp
         Classes/Stop.cpp
         Classes/Platform.cpp
+        Classes/Train.cpp
         )
 
 set(GAME_HEADERS
@@ -172,6 +173,7 @@ set(GAME_HEADERS
         Classes/Timetable.h
         Classes/Stop.h
         Classes/Platform.h
+        Classes/Train.h
         )
 
 # add the executable

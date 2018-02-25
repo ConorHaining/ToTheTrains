@@ -17,7 +17,9 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/Station.cpp \
                    $(LOCAL_PATH)/../../../Classes/Timetable.cpp\
                    $(LOCAL_PATH)/../../../Classes/Stop.cpp \
-                   $(LOCAL_PATH)/../../../Classes/Platform.cpp
+                   $(LOCAL_PATH)/../../../Classes/Platform.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Train.cpp
+
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 
