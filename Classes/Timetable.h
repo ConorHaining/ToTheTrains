@@ -10,13 +10,17 @@
 #include "Stop.h"
 
 class Timetable {
-public:
+private:
+
     std::vector<Stop> stops;
+public:
 
     Stop invokeNextStop();
     bool checkNextStop();
     void prepareNextStop();
     void removeStop();
+
+    void addStop(Stop s);
 };
 
 
