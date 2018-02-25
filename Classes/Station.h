@@ -11,10 +11,14 @@
 class Station : public cocos2d::Scene{
 public:
     static cocos2d::Scene* createScene();
-
+    bool setBackground(char* resourceName);
     virtual bool init();
-
     CREATE_FUNC(Station);
+private:
+
+    cocos2d::Sprite* background;
+
+    void buildBackground();
 
 };
 

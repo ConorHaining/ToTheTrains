@@ -6,6 +6,8 @@
 
 USING_NS_CC;
 
+Sprite* background = null;
+
 Scene* Station::createScene() {
     return Station::create();
 }
@@ -25,34 +27,41 @@ bool Station::init() {
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
     /**
      * Add station background
      */
-    auto background = Sprite::create("CroyStation.png");
-
-    if(background == nullptr) {
-        problemLoading("CroyStation.png");
-    } else {
-        problemLoading("no null");
-
-        background->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-        auto visibleRect = Director::getInstance()->getOpenGLView()->getVisibleRect();
-        float scaleY = visibleRect.size.height / background->getContentSize().height;
-        float scaleX = visibleRect.size.width / background->getContentSize().width;
-
-        if(scaleX > scaleY) {
-            background->setScale(scaleX);
-        } else {
-            background->setScale(scaleY);
-        }
-
-        background->setVisible(true);
-        this->addChild(background, 1);
-    }
+    this->buildBackground();
 
     return true;
+}
+
+bool Station::setBackground(char* resourceName) {
+    Sprite* backgroundSprite = Sprite::create(resourceName);
+
+    if (backgroundSprite == nullptr) {
+        return false;
+    } else {
+        this->background = backgroundSprite;
+    }
+}
+
+void Station::buildBackground() {
+
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    background->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+
+    auto visibleRect = Director::getInstance()->getOpenGLView()->getVisibleRect();
+    float scaleY = visibleRect.size.height / background->getContentSize().height;
+    float scaleX = visibleRect.size.width / background->getContentSize().width;
+
+    if(scaleX > scaleY) {
+        background->setScale(scaleX);
+    } else {
+        background->setScale(scaleY);
+    }
+
+    background->setVisible(true);
+    this->addChild(background, 1);
 }
