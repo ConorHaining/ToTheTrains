@@ -4,6 +4,14 @@
 
 #include "Timetable.h"
 
+Timetable *Timetable::create() {
+    if(instance == 0){
+        instance = new Timetable();
+    }
+
+    return instance;
+}
+
 Stop Timetable::invokeNextStop() {
     return Stop();
 }

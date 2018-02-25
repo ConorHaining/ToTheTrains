@@ -13,7 +13,16 @@ class Timetable {
 private:
 
     std::vector<Stop> stops;
+
+    /**
+     * Singleton
+     */
+    static Timetable* instance;
+    Timetable();
+
 public:
+
+    static Timetable* create();
 
     Stop invokeNextStop();
     bool checkNextStop();
