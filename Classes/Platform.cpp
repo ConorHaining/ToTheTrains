@@ -9,3 +9,15 @@ Platform::Platform(std::string platformLabel, Vec2 drawLocation, Vec2 stoppingLo
     this->drawLocation = drawLocation;
     this->stoppingLocation = stoppingLocation;
 }
+
+std::string Platform::getPlatformLabel() {
+    return this->platformLabel;
+}
+
+Vec2 Platform::getDrawLocation() {
+    return this->drawLocation;
+}
+
+Vec2 Platform::getStoppingLocation() {
+    return this->stoppingLocation;
+}

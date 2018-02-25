@@ -18,6 +18,9 @@ private:
 
 public:
     Platform(std::string platformLabel, Vec2 drawLocation, Vec2 stoppingLocation);
+    std::string getPlatformLabel();
+    Vec2 getDrawLocation();
+    Vec2 getStoppingLocation();
 };
 
 
