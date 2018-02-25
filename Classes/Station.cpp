@@ -6,7 +6,7 @@
 
 USING_NS_CC;
 
-Sprite* background = null;
+Sprite* background = NULL;
 
 Scene* Station::createScene() {
     return Station::create();
@@ -30,7 +30,13 @@ bool Station::init() {
     /**
      * Add station background
      */
-    this->buildBackground();
+    this->setBackground("CroyStation.png");
+
+    if(this->background != NULL) {
+        this->buildBackground();
+    } else {
+        problemLoading("Problem Loading Station");
+    }
 
     return true;
 }
