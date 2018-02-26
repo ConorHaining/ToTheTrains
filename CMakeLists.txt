@@ -159,10 +159,6 @@ set(GAME_SRC
         Classes/AppDelegate.cpp
         Classes/HelloWorldScene.cpp
         Classes/Station.cpp
-        Classes/Timetable.cpp
-        Classes/Stop.cpp
-        Classes/Platform.cpp
-        Classes/Train.cpp
         )
 
 set(GAME_HEADERS
@@ -170,10 +166,6 @@ set(GAME_HEADERS
         Classes/AppDelegate.h
         Classes/HelloWorldScene.h
         Classes/Station.h
-        Classes/Timetable.h
-        Classes/Stop.h
-        Classes/Platform.h
-        Classes/Train.h
         )
 
 # add the executable
