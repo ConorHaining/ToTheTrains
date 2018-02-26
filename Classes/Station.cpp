@@ -3,6 +3,9 @@
 //
 
 #include "Station.h"
+#include "Train.h"
+#include "Platform.h"
+#include "Timetable.h"
 
 USING_NS_CC;
 
@@ -28,6 +31,15 @@ bool Station::init() {
     }
 
     /**
+     * Initiate Station Builder
+     * ==============================
+     *
+     * This creates everything the Station class requires to function,
+     * including it's Timetable and the Stops. Platforms available at this
+     * station, creation of Trains and such.
+     */
+
+    /**
      * Add station background
      */
     this->setBackground("CroyStation.png");
@@ -37,6 +49,23 @@ bool Station::init() {
     } else {
         problemLoading("Problem Loading Station");
     }
+
+    /**
+     * DEV
+     * Load the Stations's Timetable
+     */
+    this->timetable = Timetable::getInstance();
+
+    /**
+     * DEV
+     * Create Train
+     */
+    auto train = Train::create("Scotrail170.png");
+    train->setPosition(135, -200);
+    train->setScale(1.2);
+    this->addChild(train, 1);
+
+    train->moveOntoPlatform();
 
     return true;
 }
