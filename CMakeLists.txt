@@ -159,6 +159,7 @@ set(GAME_SRC
         Classes/AppDelegate.cpp
         Classes/HelloWorldScene.cpp
         Classes/Station.cpp
+        Classes/EntityInterface.cpp
         )
 
 set(GAME_HEADERS
@@ -166,6 +167,7 @@ set(GAME_HEADERS
         Classes/AppDelegate.h
         Classes/HelloWorldScene.h
         Classes/Station.h
+        Classes/EntityInterface.h
         )
 
 # add the executable
