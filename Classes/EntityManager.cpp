@@ -21,13 +21,24 @@ EntityManager *EntityManager::getInstance() {
 
 int EntityManager::createEntity(EntityInterface entity) {
 
+    int size = this->entities.capacity();
+
+    this->entities[size] = entity;
+
 }
 
 EntityInterface EntityManager::getEntity(int id) {
-    return EntityInterface();
+
+    return this->entities[id];
 }
 
 void EntityManager::deleteEntity(int id) {
+
+    EntityInterface entity = this->getEntity(id);
+
+    entity.markForDeletion();
+
+    this->entities[id] = nullptr;
 
 }
 
