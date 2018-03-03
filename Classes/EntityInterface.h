@@ -6,10 +6,14 @@
 #define PROJ_ANDROID_STUDIO_ENTITYINTERFACE_H
 
 
+#include <vector>
+#include "ComponentInterface.h"
+
 class EntityInterface {
 private:
     int EntityID;
     bool markedForDeletion;
+    std::vector<ComponentInterface> attachedComponents;
 
 public:
     EntityInterface();
