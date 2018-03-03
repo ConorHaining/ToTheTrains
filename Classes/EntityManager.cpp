@@ -43,14 +43,24 @@ void EntityManager::deleteEntity(int id) {
 }
 
 void EntityManager::createComponent(ComponentInterface component) {
+    int size = this->components.capacity();
 
+    this->components[size] = component;
 }
 
 ComponentInterface EntityManager::getComponent(int id) {
-    return ComponentInterface();
+
+    return this->components[id];
+
 }
 
 void EntityManager::deleteComponent(int id) {
+
+    ComponentInterface component = this->getComponent(id);
+
+    delete component;
+
+    this->components[id] = nullptr;
 
 }
 
