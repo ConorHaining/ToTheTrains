@@ -161,6 +161,7 @@ set(GAME_SRC
         Classes/Station.cpp
         Classes/EntityInterface.cpp
         Classes/EntityManger.cpp
+        Classes/ComponentInterface.cpp
         )
 
 set(GAME_HEADERS
@@ -170,6 +171,7 @@ set(GAME_HEADERS
         Classes/Station.h
         Classes/EntityInterface.h
         Classes/EntityManger.h
+        Classes/ComponentInterface.h
         )
 
 # add the executable

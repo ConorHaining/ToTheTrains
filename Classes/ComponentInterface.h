@@ -6,11 +6,9 @@
 #define PROJ_ANDROID_STUDIO_COMPONENTINTERFACE_H
 
 
-
 class ComponentInterface {
 
 };
-
 
 
 #endif //PROJ_ANDROID_STUDIO_COMPONENTINTERFACE_H
