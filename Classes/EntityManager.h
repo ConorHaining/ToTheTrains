@@ -1,0 +1,14 @@
+//
+// Created by conor on 03/03/18.
+//
+
+#ifndef PROJ_ANDROID_STUDIO_ENTITYMANAGER_H
+#define PROJ_ANDROID_STUDIO_ENTITYMANAGER_H
+
+
+class EntityManager {
+
+};
+
+
+#endif //PROJ_ANDROID_STUDIO_ENTITYMANAGER_H
