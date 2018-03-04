@@ -18,7 +18,8 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/EntityInterface.cpp \
                    $(LOCAL_PATH)/../../../Classes/EntityManager.cpp \
                    $(LOCAL_PATH)/../../../Classes/ComponentInterface.cpp \
-                   $(LOCAL_PATH)/../../../Classes/Components/SpawnLocation.cpp
+                   $(LOCAL_PATH)/../../../Classes/Components/SpawnLocation.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Components/StoppingLocation.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
