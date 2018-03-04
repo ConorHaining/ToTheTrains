@@ -7,7 +7,15 @@
 
 
 class SpawnLocation {
+private:
+    int x;
+    int y;
+public:
+    int getY() const;
+    void setY(int y);
 
+    int getX() const;
+    void setX(int x);
 };
 
 
