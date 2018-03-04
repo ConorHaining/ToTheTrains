@@ -8,7 +8,7 @@
 
 #include <string>
 
-class StoppingLocation {
+class TrainType {
 private:
     int length;
     std::string trainClass;
