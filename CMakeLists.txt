@@ -164,6 +164,7 @@ set(GAME_SRC
         Classes/ComponentInterface.cpp
         Classes/Components/SpawnLocation.cpp
         Classes/Components/TrainType.cpp
+        Classes/Components/StoppingLocation.cpp
         )
 
 set(GAME_HEADERS
@@ -176,6 +177,7 @@ set(GAME_HEADERS
         Classes/ComponentInterface.h
         Classes/Components/SpawnLocation.h
         Classes/Components/TrainType.h
+        Classes/Components/StoppingLocation.h
         )
 
 # add the executable
