@@ -162,6 +162,7 @@ set(GAME_SRC
         Classes/EntityInterface.cpp
         Classes/EntityManger.cpp
         Classes/ComponentInterface.cpp
+        Classes/ComponentInterface.Components/SpawnLocation
         )
 
 set(GAME_HEADERS
@@ -172,6 +173,7 @@ set(GAME_HEADERS
         Classes/EntityInterface.h
         Classes/EntityManger.h
         Classes/ComponentInterface.h
+        Classes/Components/SpawnLocation.h
         )
 
 # add the executable

@@ -1,0 +1,14 @@
+//
+// Created by conor on 04/03/18.
+//
+
+#ifndef PROJ_ANDROID_STUDIO_SPAWNLOCATION_H
+#define PROJ_ANDROID_STUDIO_SPAWNLOCATION_H
+
+
+class SpawnLocation {
+
+};
+
+
+#endif //PROJ_ANDROID_STUDIO_SPAWNLOCATION_H
