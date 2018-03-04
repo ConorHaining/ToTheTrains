@@ -6,8 +6,18 @@
 #define PROJ_ANDROID_STUDIO_STOPPINGLOCATION_H
 
 
-class StoppingLocation {
+#include <string>
 
+class StoppingLocation {
+private:
+    int length;
+    std::string trainClass;
+public:
+    const std::string &getTrainClass() const;
+    void setTrainClass(const std::string &trainClass);
+
+    int getLength() const;
+    void setLength(int length);
 };
 
 
