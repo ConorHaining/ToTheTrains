@@ -163,9 +163,11 @@ set(GAME_SRC
         Classes/EntityManger.cpp
         Classes/ComponentInterface.cpp
         Classes/Components/SpawnLocation.cpp
+        Classes/Components/DespwanLocation.cpp
         Classes/Components/TrainType.cpp
         Classes/Components/StoppingLocation.cpp
         Classes/Components/ArrivalSequence.cpp
+        Classes/Components/DepartureSequence.cpp
         Classes/Entities/Station.cpp
         )
 
@@ -178,9 +180,11 @@ set(GAME_HEADERS
         Classes/EntityManger.h
         Classes/ComponentInterface.h
         Classes/Components/SpawnLocation.h
+        Classes/Components/DespwanLocation.h
         Classes/Components/TrainType.h
         Classes/Components/StoppingLocation.h
         Classes/Components/ArrivalSequence.h
+        Classes/Components/DepartureSequence.h
         Classes/Entities/Station.h
         )
 
