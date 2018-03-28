@@ -25,6 +25,7 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/Components/ArrivalSequence.cpp \
                    $(LOCAL_PATH)/../../../Classes/Components/DepartureSequence.cpp \
                    $(LOCAL_PATH)/../../../Classes/Components/ArrivalTime.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Components/DepartureTime.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/Station.cpp
 
 

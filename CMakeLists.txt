@@ -168,6 +168,7 @@ set(GAME_SRC
         Classes/Components/StoppingLocation.cpp
         Classes/Components/ArrivalSequence.cpp
         Classes/Components/ArrivalTime.cpp
+        Classes/Components/DepartureTime.cpp
         Classes/Entities/Station.cpp
         )
 
@@ -185,6 +186,7 @@ set(GAME_HEADERS
         Classes/Components/StoppingLocation.h
         Classes/Components/ArrivalSequence.h
         Classes/Components/ArrivalTime.h
+        Classes/Components/DepartureTime.h
         Classes/Entities/Station.h
         )
 
