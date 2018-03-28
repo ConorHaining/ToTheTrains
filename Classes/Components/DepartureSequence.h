@@ -9,7 +9,7 @@
 #include "cocos2d.h"
 #include "DespawnLocation.h"
 
-class ArrivalSequence {
+class DepartureSequence {
 private:
     cocos2d::MoveTo* movement;
 public:
