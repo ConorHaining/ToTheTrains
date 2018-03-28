@@ -170,6 +170,7 @@ set(GAME_SRC
         Classes/Components/ArrivalTime.cpp
         Classes/Components/DepartureTime.cpp
         Classes/Components/Satisfaction.cpp
+        Classes/Components/Time.cpp
         Classes/Entities/Station.cpp
         )
 
@@ -189,6 +190,7 @@ set(GAME_HEADERS
         Classes/Components/ArrivalTime.h
         Classes/Components/DepartureTime.h
         Classes/Components/Satisfaction.h
+        Classes/Components/Time.h
         Classes/Entities/Station.h
         )
 
