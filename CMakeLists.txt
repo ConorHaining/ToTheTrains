@@ -167,7 +167,7 @@ set(GAME_SRC
         Classes/Components/TrainType.cpp
         Classes/Components/StoppingLocation.cpp
         Classes/Components/ArrivalSequence.cpp
-        Classes/Components/DepartureSequence.cpp
+        Classes/Components/ArrivalTime.cpp
         Classes/Entities/Station.cpp
         )
 
@@ -184,7 +184,7 @@ set(GAME_HEADERS
         Classes/Components/TrainType.h
         Classes/Components/StoppingLocation.h
         Classes/Components/ArrivalSequence.h
-        Classes/Components/DepartureSequence.h
+        Classes/Components/ArrivalTime.h
         Classes/Entities/Station.h
         )
 
