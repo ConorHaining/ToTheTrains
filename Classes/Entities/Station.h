@@ -6,8 +6,9 @@
 #define PROJ_ANDROID_STUDIO_STATION_H
 
 
+#include <EntityInterface.h>
 
-class Station {
+class Station : public EntityInterface{
 
 };
 
