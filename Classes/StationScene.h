@@ -1,5 +1,5 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __STATION_SCENE_H__
+#define __STATION_SCENE_H__
 
 #include "cocos2d.h"
 
@@ -14,4 +14,4 @@ public:
     CREATE_FUNC(StationScene);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif // __STATION_SCENE_H__
