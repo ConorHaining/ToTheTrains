@@ -4,17 +4,17 @@
 
 #include "EntityManager.h"
 
-EntityManager::instance = nullptr;
+EntityManager* EntityManager::instance = 0;
 
-EntityManager::EntityManager() {
-
-}
+EntityManager::EntityManager() { }
 
 EntityManager *EntityManager::getInstance() {
 
-    if (EntityManager::instance == nullptr) {
-        EntityManager::instance = new EntityManager();
+    if (instance == 0) {
+        instance = new EntityManager();
     }
+
+    return instance;
 
 
 }
@@ -38,7 +38,7 @@ void EntityManager::deleteEntity(int id) {
 
     entity.markForDeletion();
 
-    this->entities[id] = nullptr;
+    this->entities.erase(this->entities.begin() + id);
 
 }
 
@@ -58,9 +58,9 @@ void EntityManager::deleteComponent(int id) {
 
     ComponentInterface component = this->getComponent(id);
 
-    delete component;
+//    delete component;
 
-    this->components[id] = nullptr;
+    this->entities.erase(this->entities.begin() + id);
 
 }
 
