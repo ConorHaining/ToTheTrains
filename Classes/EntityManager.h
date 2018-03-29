@@ -20,7 +20,7 @@ private:
     EntityManager();
 
     std::vector<EntityInterface*> entities;
-    std::vector<ComponentInterface> components;
+    std::vector<ComponentInterface*> components;
 
 public:
 
@@ -30,12 +30,12 @@ public:
     EntityInterface* getEntity(int id);
     void deleteEntity(int id);
 
-    void createComponent(ComponentInterface component);
-    ComponentInterface getComponent(int id);
+    void createComponent(ComponentInterface* component);
+    ComponentInterface* getComponent(int id);
     void deleteComponent(int id);
 
 
-    void addEntityToComponent(EntityInterface entity, ComponentInterface component);
+    void addEntityToComponent(EntityInterface* entity, ComponentInterface* component);
 };
 
 
