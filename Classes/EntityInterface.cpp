@@ -25,3 +25,11 @@ void EntityInterface::markForDeletion() {
 bool EntityInterface::isMarkedForDeletion() {
     return this->markedForDeletion;
 }
+
+void EntityInterface::attachComponent(ComponentInterface* component) {
+    attachedComponents.push_back(component);
+}
+
+ComponentInterface *EntityInterface::getComponent(int id) {
+    return attachedComponents[id - 1];
+}

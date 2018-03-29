@@ -13,7 +13,7 @@ class EntityInterface {
 private:
     int EntityID;
     bool markedForDeletion;
-    std::vector<ComponentInterface> attachedComponents;
+    std::vector<ComponentInterface*> attachedComponents;
 
 public:
     EntityInterface();
@@ -21,6 +21,8 @@ public:
     virtual int getID();
     virtual void markForDeletion();
     virtual bool isMarkedForDeletion();
+    void attachComponent(ComponentInterface* component);
+    ComponentInterface* getComponent(int id);
 };
 
 
