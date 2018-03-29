@@ -226,10 +226,10 @@ void GLViewImpl::BackButtonListener(EventKeyboard::KeyCode keyCode, Event* event
 		CCLOG("");
 		CCLOG("For example, add the following to your scene...");
 		CCLOG("auto listener = EventListenerKeyboard::create();");
-		CCLOG("listener->onKeyReleased = CC_CALLBACK_2(HelloWorld::onKeyReleased, this);");
+		CCLOG("listener->onKeyReleased = CC_CALLBACK_2(StationScene::onKeyReleased, this);");
 		CCLOG("getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);");
 		CCLOG("");
-		CCLOG("void HelloWorld::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)");
+		CCLOG("void StationScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)");
 		CCLOG("{");
 		CCLOG("     if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)");
 		CCLOG("     {");
