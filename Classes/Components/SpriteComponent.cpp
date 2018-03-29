@@ -4,10 +4,10 @@
 
 #include "Sprite.h"
 
-void Sprite::createSprite(std::string resource) {
+void SpriteComponent::createSprite(std::string resource) {
     sprite = cocos2d::Sprite::create(resource);
 }
 
-cocos2d::Sprite* Sprite::getSprite() {
+cocos2d::Sprite* SpriteComponent::getSprite() {
     return sprite;
 }

@@ -2,14 +2,14 @@
 // Created by conor on 29/03/18.
 //
 
-#ifndef PROJ_ANDROID_STUDIO_SPRITE_H
-#define PROJ_ANDROID_STUDIO_SPRITE_H
+#ifndef PROJ_ANDROID_STUDIO_SPRITECOMPONENT_H
+#define PROJ_ANDROID_STUDIO_SPRITECOMPONENT_H
 
 
 #include "cocos2d.h";
 #include "../ComponentInterface.h"
 
-class Sprite : public ComponentInterface{
+class SpriteComponent : public ComponentInterface{
 private:
     cocos2d::Sprite* sprite;
 
