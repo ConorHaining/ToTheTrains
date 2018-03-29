@@ -172,6 +172,7 @@ set(GAME_SRC
         Classes/Components/Time.cpp
         Classes/Components/SpriteComponent.cpp
         Classes/Entities/Station.cpp
+        Classes/Systems/StationRenderSystem.cpp
         )
 
 set(GAME_HEADERS
@@ -192,6 +193,7 @@ set(GAME_HEADERS
         Classes/Components/Time.h
         Classes/Components/SpriteComponent.h
         Classes/Entities/Station.h
+        Classes/Systems/StationRenderSystem.h
         )
 
 # add the executable
