@@ -92,9 +92,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     register_all_packages();
-
+    log("Before Scene");
     // create a scene. it's an autorelease object
     auto scene = StationScene::createScene();
+    log("After Scene");
 
     // run
     director->runWithScene(scene);
