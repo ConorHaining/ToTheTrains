@@ -3,12 +3,14 @@
 //
 
 #include <string>
+#include <iostream>
 #include "SpriteComponent.h"
 
 void SpriteComponent::createSprite(std::string resource) {
-    sprite = cocos2d::Sprite::create(resource);
+    sprite = Sprite::create(resource);
+    std::cout << resource << std::endl;
 }
 
-cocos2d::Sprite* SpriteComponent::getSprite() {
+Sprite* SpriteComponent::getSprite() {
     return sprite;
 }

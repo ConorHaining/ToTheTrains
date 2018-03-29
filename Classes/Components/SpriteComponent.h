@@ -8,14 +8,15 @@
 
 #include "cocos2d.h";
 #include "../ComponentInterface.h"
+USING_NS_CC;
 
 class SpriteComponent : public ComponentInterface{
 private:
-    cocos2d::Sprite* sprite;
+    Sprite* sprite;
 
 public:
     void createSprite(std::string resource);
-    cocos2d::Sprite* getSprite();
+    Sprite* getSprite();
 };
 
 
