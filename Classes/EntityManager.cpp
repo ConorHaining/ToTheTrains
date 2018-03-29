@@ -21,9 +21,9 @@ EntityManager *EntityManager::getInstance() {
 
 int EntityManager::createEntity(EntityInterface* entity) {
 
-    int size = this->entities.capacity();
+    this->entities.push_back(entity);
 
-    this->entities[size] = entity;
+    return this->entities.size();
 
 }
 
@@ -65,5 +65,5 @@ void EntityManager::deleteComponent(int id) {
 }
 
 void EntityManager::addEntityToComponent(EntityInterface* entity, ComponentInterface* component) {
-
+    entity->attachComponent(component);
 }
