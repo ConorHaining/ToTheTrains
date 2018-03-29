@@ -19,15 +19,15 @@ private:
     static EntityManager* instance;
     EntityManager();
 
-    std::vector<EntityInterface> entities;
+    std::vector<EntityInterface*> entities;
     std::vector<ComponentInterface> components;
 
 public:
 
     static EntityManager* getInstance();
 
-    int createEntity(EntityInterface entity);
-    EntityInterface getEntity(int id);
+    int createEntity(EntityInterface* entity);
+    EntityInterface* getEntity(int id);
     void deleteEntity(int id);
 
     void createComponent(ComponentInterface component);

@@ -19,7 +19,7 @@ EntityManager *EntityManager::getInstance() {
 
 }
 
-int EntityManager::createEntity(EntityInterface entity) {
+int EntityManager::createEntity(EntityInterface* entity) {
 
     int size = this->entities.capacity();
 
@@ -27,16 +27,16 @@ int EntityManager::createEntity(EntityInterface entity) {
 
 }
 
-EntityInterface EntityManager::getEntity(int id) {
+EntityInterface* EntityManager::getEntity(int id) {
 
     return this->entities[id];
 }
 
 void EntityManager::deleteEntity(int id) {
 
-    EntityInterface entity = this->getEntity(id);
+    EntityInterface* entity = this->getEntity(id);
 
-    entity.markForDeletion();
+    entity->markForDeletion();
 
     this->entities.erase(this->entities.begin() + id);
 
