@@ -1,10 +1,15 @@
+#include <Entities/Station.h>
+#include <Components/SpriteComponent.h>
+#include <Systems/StationRenderSystem.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
+#include "EntityManager.h"
 
 USING_NS_CC;
 
 Scene* StationScene::createScene()
 {
+    log("Creating StationScene");
     return StationScene::create();
 }
 
@@ -18,6 +23,7 @@ static void problemLoading(const char* filename)
 // on "init" you need to initialize your instance
 bool StationScene::init()
 {
+
     //////////////////////////////
     // 1. super init first
     if ( !Scene::init() )
@@ -28,8 +34,27 @@ bool StationScene::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    // Create EntityManager
+    log("Creating EntityManager");
+    EntityManager* entityManager = EntityManager::getInstance();
+    log("Created EntityManager");
 
+    // Load in Entities
+    log("Creating Station Entity");
+    Station* stationEntity = new Station();
+    log("Adding Station Entity");
+    entityManager->createEntity(stationEntity);
+    log("Created Station Entity");
 
+    // Attach Components
+    SpriteComponent* sprite = new SpriteComponent();
+    sprite->createSprite("CroyStation.png");
+    entityManager->addEntityToComponent(stationEntity, sprite);
+    log("Created Sprite Components");
+
+    // Run StationRenderSystem
+    StationRenderSystem* stationRenderSystem = new StationRenderSystem(this, stationEntity);
+    stationRenderSystem->drawStation();
 
     return true;
 }
