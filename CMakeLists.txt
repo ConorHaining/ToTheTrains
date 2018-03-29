@@ -157,8 +157,7 @@ endif ()
 set(GAME_SRC
         ${PLATFORM_SPECIFIC_SRC}
         Classes/AppDelegate.cpp
-        Classes/HelloWorldScene.cpp
-        Classes/Station.cpp
+        Classes/StationScene.cpp
         Classes/EntityInterface.cpp
         Classes/EntityManger.cpp
         Classes/ComponentInterface.cpp
@@ -177,8 +176,7 @@ set(GAME_SRC
 set(GAME_HEADERS
         ${PLATFORM_SPECIFIC_HEADERS}
         Classes/AppDelegate.h
-        Classes/HelloWorldScene.h
-        Classes/Station.h
+        Classes/StationScene.h
         Classes/EntityInterface.h
         Classes/EntityManger.h
         Classes/ComponentInterface.h
