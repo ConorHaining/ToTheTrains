@@ -9,5 +9,5 @@ cocos2d::MoveTo *ArrivalSequence::getMovement() const {
 }
 
 void ArrivalSequence::setMovement(StoppingLocation stoppingLocation) {
-    movement = cocos2d::MoveTo::create(3, cocos2d::Vec2(stoppingLocation.getX(), stoppingLocation.getY()))
+    movement = cocos2d::MoveTo::create(3, cocos2d::Vec2(stoppingLocation.getX(), stoppingLocation.getY()));
 }

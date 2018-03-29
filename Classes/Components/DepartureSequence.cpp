@@ -9,5 +9,5 @@ cocos2d::MoveTo *DepartureSequence::getMovement() const {
 }
 
 void DepartureSequence::setMovement(DespawnLocation despawnLocation) {
-    movement = cocos2d::MoveTo::create(3, cocos2d::Vec2(despawnLocation.getX(), despawnLocation.getY()))
+    movement = cocos2d::MoveTo::create(3, cocos2d::Vec2(despawnLocation.getX(), despawnLocation.getY()));
 }
