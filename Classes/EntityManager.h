@@ -42,7 +42,7 @@ public:
     void deleteEntity(std::string tag);
 
     void createComponent(std::string tag, ComponentInterface* component);
-    ComponentInterface* getComponent(int id);
+    ComponentInterface* getComponent(std::string tag);
     void deleteComponent(int id);
 
 

@@ -69,9 +69,17 @@ void EntityManager::createComponent(std::string tag, ComponentInterface* compone
     this->components.push_back(componentStorage);
 }
 
-ComponentInterface* EntityManager::getComponent(int id) {
+ComponentInterface* EntityManager::getComponent(std::string tag) {
 
-    return this->components[id];
+    for (std::vector<ComponentStorage>::iterator it = entities.begin() ; it != entities.end(); ++it) {
+
+        if((*it).tag == tag) {
+            return (*it).component;
+        }
+
+    }
+
+    return nullptr;
 
 }
 
