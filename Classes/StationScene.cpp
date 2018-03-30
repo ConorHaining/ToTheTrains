@@ -53,7 +53,7 @@ bool StationScene::init()
     log("Created Sprite Components");
 
     // Run StationRenderSystem
-    StationRenderSystem* stationRenderSystem = new StationRenderSystem(this, stationEntity);
+    StationRenderSystem* stationRenderSystem = new StationRenderSystem(this);
     stationRenderSystem->drawStation();
 
     return true;
