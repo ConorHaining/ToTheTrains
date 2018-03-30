@@ -157,23 +157,43 @@ endif ()
 set(GAME_SRC
         ${PLATFORM_SPECIFIC_SRC}
         Classes/AppDelegate.cpp
-        Classes/HelloWorldScene.cpp
-        Classes/Station.cpp
-        Classes/Timetable.cpp
-        Classes/Stop.cpp
-        Classes/Platform.cpp
-        Classes/Train.cpp
+        Classes/StationScene.cpp
+        Classes/EntityInterface.cpp
+        Classes/EntityManger.cpp
+        Classes/ComponentInterface.cpp
+        Classes/Components/SpawnLocation.cpp
+        Classes/Components/DespwanLocation.cpp
+        Classes/Components/TrainType.cpp
+        Classes/Components/StoppingLocation.cpp
+        Classes/Components/ArrivalSequence.cpp
+        Classes/Components/ArrivalTime.cpp
+        Classes/Components/DepartureTime.cpp
+        Classes/Components/Satisfaction.cpp
+        Classes/Components/Time.cpp
+        Classes/Components/SpriteComponent.cpp
+        Classes/Entities/Station.cpp
+        Classes/Systems/StationRenderSystem.cpp
         )
 
 set(GAME_HEADERS
         ${PLATFORM_SPECIFIC_HEADERS}
         Classes/AppDelegate.h
-        Classes/HelloWorldScene.h
-        Classes/Station.h
-        Classes/Timetable.h
-        Classes/Stop.h
-        Classes/Platform.h
-        Classes/Train.h
+        Classes/StationScene.h
+        Classes/EntityInterface.h
+        Classes/EntityManger.h
+        Classes/ComponentInterface.h
+        Classes/Components/SpawnLocation.h
+        Classes/Components/DespwanLocation.h
+        Classes/Components/TrainType.h
+        Classes/Components/StoppingLocation.h
+        Classes/Components/ArrivalSequence.h
+        Classes/Components/ArrivalTime.h
+        Classes/Components/DepartureTime.h
+        Classes/Components/Satisfaction.h
+        Classes/Components/Time.h
+        Classes/Components/SpriteComponent.h
+        Classes/Entities/Station.h
+        Classes/Systems/StationRenderSystem.h
         )
 
 # add the executable

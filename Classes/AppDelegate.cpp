@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "Station.h"
+#include "StationScene.h"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -92,9 +92,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     register_all_packages();
-
+    log("Before Scene");
     // create a scene. it's an autorelease object
-    auto scene = Station::createScene();
+    auto scene = StationScene::createScene();
+    log("After Scene");
 
     // run
     director->runWithScene(scene);
