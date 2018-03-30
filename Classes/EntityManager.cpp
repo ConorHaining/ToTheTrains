@@ -23,12 +23,11 @@ void EntityManager::createEntity(std::string tag, EntityInterface* entity) {
 
     // Create new struct
     EntityStorage entityStorage;
-
     entityStorage.tag = tag;
     entityStorage.entity = entity;
 
     // Store struct
-    this->entities.push_back(entityStorage);
+    entities.push_back(entityStorage);
 
 }
 
@@ -61,12 +60,11 @@ void EntityManager::createComponent(std::string tag, ComponentInterface* compone
 
     // Create new struct
     ComponentStorage componentStorage;
-
     componentStorage.tag = tag;
     componentStorage.component = component;
 
     // Store struct
-    this->components.push_back(componentStorage);
+    components.push_back(componentStorage);
 }
 
 ComponentInterface* EntityManager::getComponent(std::string tag) {

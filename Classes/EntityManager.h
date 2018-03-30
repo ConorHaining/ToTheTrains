@@ -11,6 +11,16 @@
 #include "EntityInterface.h"
 #include "ComponentInterface.h"
 
+struct EntityStorage{
+    std::string tag;
+    EntityInterface* entity;
+};
+
+struct ComponentStorage{
+    std::string tag;
+    ComponentInterface* component;
+};
+
 class EntityManager {
 private:
     /**
@@ -20,20 +30,10 @@ private:
     static EntityManager* instance;
     EntityManager();
 
-    std::vector<EntityStorage> entities;
-    std::vector<ComponentStorage> components;
+    std::vector<EntityStorage> entities {};
+    std::vector<ComponentStorage> components {};
 
 public:
-
-    public struct EntityStorage{
-        std::string tag;
-        EntityInterface* entity;
-    };
-
-    public struct ComponentStorage{
-        std::string tag;
-        ComponentInterface* component;
-    };
 
     static EntityManager* getInstance();
 
