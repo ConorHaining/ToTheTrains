@@ -21,7 +21,7 @@ private:
     EntityManager();
 
     std::vector<EntityStorage> entities;
-    std::vector<ComponentInterface*> components;
+    std::vector<ComponentStorage> components;
 
 public:
 
@@ -30,13 +30,18 @@ public:
         EntityInterface* entity;
     };
 
+    public struct ComponentStorage{
+        std::string tag;
+        ComponentInterface* component;
+    };
+
     static EntityManager* getInstance();
 
     void createEntity(std::string tag, EntityInterface* entity);
     EntityInterface* getEntity(std::string tag);
     void deleteEntity(std::string tag);
 
-    void createComponent(ComponentInterface* component);
+    void createComponent(std::string tag, ComponentInterface* component);
     ComponentInterface* getComponent(int id);
     void deleteComponent(int id);
 

@@ -57,10 +57,16 @@ void EntityManager::deleteEntity(std::string tag) {
 
 }
 
-void EntityManager::createComponent(ComponentInterface* component) {
-    int size = this->components.capacity();
+void EntityManager::createComponent(std::string tag, ComponentInterface* component) {
 
-    this->components[size] = component;
+    // Create new struct
+    ComponentStorage componentStorage;
+
+    componentStorage.tag = tag;
+    componentStorage.component = component;
+
+    // Store struct
+    this->components.push_back(componentStorage);
 }
 
 ComponentInterface* EntityManager::getComponent(int id) {
