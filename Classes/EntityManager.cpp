@@ -19,11 +19,16 @@ EntityManager *EntityManager::getInstance() {
 
 }
 
-int EntityManager::createEntity(EntityInterface* entity) {
+void EntityManager::createEntity(std::string tag, EntityInterface* entity) {
 
-    this->entities.push_back(entity);
+    // Create new struct
+    EntityStorage entityStorage;
 
-    return this->entities.size();
+    entityStorage.tag = tag;
+    entityStorage.entity = entity;
+
+    // Store struct
+    this->entities.push_back(entityStorage);
 
 }
 

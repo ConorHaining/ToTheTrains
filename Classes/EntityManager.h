@@ -7,6 +7,7 @@
 
 
 #include <vector>
+#include <string>
 #include "EntityInterface.h"
 #include "ComponentInterface.h"
 
@@ -19,14 +20,19 @@ private:
     static EntityManager* instance;
     EntityManager();
 
-    std::vector<EntityInterface*> entities;
+    std::vector<EntityStorage> entities;
     std::vector<ComponentInterface*> components;
 
 public:
 
+    public struct EntityStorage{
+        std::string tag;
+        EntityInterface* entity;
+    };
+
     static EntityManager* getInstance();
 
-    int createEntity(EntityInterface* entity);
+    void createEntity(std::string tag, EntityInterface* entity);
     EntityInterface* getEntity(int id);
     void deleteEntity(int id);
 
