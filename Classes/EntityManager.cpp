@@ -83,13 +83,16 @@ ComponentInterface* EntityManager::getComponent(std::string tag) {
 
 }
 
-void EntityManager::deleteComponent(int id) {
+void EntityManager::deleteComponent(std::string tag) {
 
-    ComponentInterface* component = this->getComponent(id);
+    for (std::vector<ComponentStorage>::iterator it = components.begin() ; it != components.end(); ++it) {
 
-//    delete component;
+        if((*it).tag == tag) {
+            //TODO Delete Components
+            (*it).component;
+        }
 
-    this->entities.erase(this->entities.begin() + id);
+    }
 
 }
 

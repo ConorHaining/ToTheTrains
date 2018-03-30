@@ -43,7 +43,7 @@ public:
 
     void createComponent(std::string tag, ComponentInterface* component);
     ComponentInterface* getComponent(std::string tag);
-    void deleteComponent(int id);
+    void deleteComponent(std::string tag);
 
 
     void addEntityToComponent(EntityInterface* entity, ComponentInterface* component);
