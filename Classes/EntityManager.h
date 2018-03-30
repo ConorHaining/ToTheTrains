@@ -34,7 +34,7 @@ public:
 
     void createEntity(std::string tag, EntityInterface* entity);
     EntityInterface* getEntity(std::string tag);
-    void deleteEntity(int id);
+    void deleteEntity(std::string tag);
 
     void createComponent(ComponentInterface* component);
     ComponentInterface* getComponent(int id);

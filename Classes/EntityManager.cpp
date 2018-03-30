@@ -41,17 +41,19 @@ EntityInterface* EntityManager::getEntity(std::string tag) {
         }
 
     }
-    
+
     return nullptr;
 }
 
-void EntityManager::deleteEntity(int id) {
+void EntityManager::deleteEntity(std::string tag) {
 
-    EntityInterface* entity = this->getEntity(id);
+    for (std::vector<EntityStorage>::iterator it = entities.begin() ; it != entities.end(); ++it) {
 
-    entity->markForDeletion();
+        if((*it).tag == tag) {
+            (*it).entity->markForDeletion();
+        }
 
-    this->entities.erase(this->entities.begin() + id);
+    }
 
 }
 
