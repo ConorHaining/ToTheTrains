@@ -43,7 +43,7 @@ bool StationScene::init()
     log("Creating Station Entity");
     Station* stationEntity = new Station();
     log("Adding Station Entity");
-    entityManager->createEntity(stationEntity);
+    entityManager->createEntity("Croy", stationEntity);
     log("Created Station Entity");
 
     // Attach Components
