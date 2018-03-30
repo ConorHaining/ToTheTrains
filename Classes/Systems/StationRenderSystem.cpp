@@ -22,8 +22,9 @@ void StationRenderSystem::drawStation() {
 
     auto dirs = Director::getInstance();
     Size visibleSize = dirs->getVisibleSize();
+    Vec2 origin = dirs->getVisibleOrigin();
 
-    sprite->getSprite()->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+    sprite->getSprite()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
     this->scene->addChild(sprite->getSprite());
 }
