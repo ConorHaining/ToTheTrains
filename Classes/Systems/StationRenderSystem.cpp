@@ -9,15 +9,17 @@
 
 USING_NS_CC;
 
-StationRenderSystem::StationRenderSystem(cocos2d::Scene *scene, EntityInterface *station) {
+StationRenderSystem::StationRenderSystem(cocos2d::Scene *scene) {
     this->scene = scene;
-    this->station = station;
     log("Assigned Scene & Staton to System");
 }
 
 void StationRenderSystem::drawStation() {
-    SpriteComponent* sprite = (SpriteComponent*)this->station->getComponent(1);
+
+    EntityManager* entityManager = EntityManager::getInstance();
+    SpriteComponent* sprite = (SpriteComponent*)entityManager->getEntity("Croy")->getComponent(1);
     log("Got Sprite");
+
     auto dirs = Director::getInstance();
     Size visibleSize = dirs->getVisibleSize();
 

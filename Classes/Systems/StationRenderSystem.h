@@ -14,7 +14,7 @@ private:
     cocos2d::Scene* scene;
     EntityInterface* station;
 public:
-    StationRenderSystem(cocos2d::Scene* scene, EntityInterface* station);
+    StationRenderSystem(cocos2d::Scene* scene);
     void drawStation();
 };
 
