@@ -32,9 +32,17 @@ void EntityManager::createEntity(std::string tag, EntityInterface* entity) {
 
 }
 
-EntityInterface* EntityManager::getEntity(int id) {
+EntityInterface* EntityManager::getEntity(std::string tag) {
 
-    return this->entities[id];
+    for (std::vector<EntityStorage>::iterator it = entities.begin() ; it != entities.end(); ++it) {
+
+        if((*it).tag == tag) {
+            return (*it).entity;
+        }
+
+    }
+    
+    return nullptr;
 }
 
 void EntityManager::deleteEntity(int id) {

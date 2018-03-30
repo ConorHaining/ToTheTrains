@@ -33,7 +33,7 @@ public:
     static EntityManager* getInstance();
 
     void createEntity(std::string tag, EntityInterface* entity);
-    EntityInterface* getEntity(int id);
+    EntityInterface* getEntity(std::string tag);
     void deleteEntity(int id);
 
     void createComponent(ComponentInterface* component);
