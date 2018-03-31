@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_TIME_H
 
 
-class Time {
+#include <ComponentInterface.h>
+
+class Time: public ComponentInterface {
 private:
     int hour;
     int minute;
