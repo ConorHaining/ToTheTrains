@@ -172,6 +172,7 @@ set(GAME_SRC
         Classes/Components/Time.cpp
         Classes/Components/SpriteComponent.cpp
         Classes/Entities/Station.cpp
+        Classes/Entities/Train.cpp
         Classes/Systems/StationRenderSystem.cpp
         )
 
@@ -193,6 +194,7 @@ set(GAME_HEADERS
         Classes/Components/Time.h
         Classes/Components/SpriteComponent.h
         Classes/Entities/Station.h
+        Classes/Entities/Train.h
         Classes/Systems/StationRenderSystem.h
         )
 
