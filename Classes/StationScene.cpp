@@ -56,5 +56,11 @@ bool StationScene::init()
     StationRenderSystem* stationRenderSystem = new StationRenderSystem(this);
     stationRenderSystem->drawStation();
 
+    this->scheduleUpdate();
+
     return true;
+}
+
+void StationScene::update(float delta) {
+
 }
