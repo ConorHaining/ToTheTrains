@@ -3,6 +3,8 @@
 #include <Systems/StationRenderSystem.h>
 #include <Entities/GameClock.h>
 #include <Components/Time.h>
+#include <Components/LabelComponent.h>
+#include <Systems/GameTimeSystem.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -53,6 +55,12 @@ bool StationScene::init()
     entityManager->createEntity("clock", gameClock);
     Time* time = new Time();
     entityManager->addEntityToComponent(gameClock, time);
+    LabelComponent* labelComponent = new LabelComponent;
+    labelComponent->createLabel("12:00");
+    entityManager->addEntityToComponent(gameClock, labelComponent);
+    GameTimeSystem* gameTimeSystem = new GameTimeSystem();
+    gameTimeSystem->setTime(12, 0);
+    log("Created Game Clock");
 
     // Attach Components
     SpriteComponent* sprite = new SpriteComponent();
