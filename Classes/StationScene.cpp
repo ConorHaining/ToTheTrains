@@ -50,18 +50,6 @@ bool StationScene::init()
     entityManager->createEntity("Croy", stationEntity);
     log("Created Station Entity");
 
-    log("Creating Game Clock");
-    GameClock* gameClock = new GameClock();
-    entityManager->createEntity("clock", gameClock);
-    Time* time = new Time();
-    entityManager->addEntityToComponent(gameClock, time);
-    LabelComponent* labelComponent = new LabelComponent;
-    labelComponent->createLabel("12:00");
-    entityManager->addEntityToComponent(gameClock, labelComponent);
-    GameTimeSystem* gameTimeSystem = new GameTimeSystem();
-    gameTimeSystem->setTime(12, 0);
-    log("Created Game Clock");
-
     // Attach Components
     SpriteComponent* sprite = new SpriteComponent();
     sprite->createSprite("CroyStation.png");
@@ -71,6 +59,21 @@ bool StationScene::init()
     // Run StationRenderSystem
     StationRenderSystem* stationRenderSystem = new StationRenderSystem(this);
     stationRenderSystem->drawStation();
+    log("Station Draw");
+
+    log("Creating Game Clock");
+    GameClock* gameClock = new GameClock();
+    entityManager->createEntity("clock", gameClock);
+    Time* time = new Time();
+    entityManager->addEntityToComponent(gameClock, time);
+    LabelComponent* labelComponent = new LabelComponent;
+    labelComponent->createLabel("12:00");
+    entityManager->addEntityToComponent(gameClock, labelComponent);
+    gameTimeSystem = new GameTimeSystem(this);
+    gameTimeSystem->setTime(12, 0);
+    gameTimeSystem->drawTime();
+    log("Created Game Clock");
+
 
     this->scheduleUpdate();
 
@@ -78,5 +81,6 @@ bool StationScene::init()
 }
 
 void StationScene::update(float delta) {
-
+    gameTimeSystem->incrementTime(delta);
+    gameTimeSystem->drawTime();
 }

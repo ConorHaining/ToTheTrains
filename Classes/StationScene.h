@@ -2,9 +2,12 @@
 #define __STATION_SCENE_H__
 
 #include "cocos2d.h"
+#include "Systems/GameTimeSystem.h"
 
 class StationScene : public cocos2d::Scene
 {
+private:
+    GameTimeSystem* gameTimeSystem;
 public:
     static cocos2d::Scene* createScene();
 
