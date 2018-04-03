@@ -171,6 +171,7 @@ set(GAME_SRC
         Classes/Components/Satisfaction.cpp
         Classes/Components/Time.cpp
         Classes/Components/SpriteComponent.cpp
+        Classes/Components/LabelComponent.cpp
         Classes/Entities/Station.cpp
         Classes/Entities/Train.cpp
         Classes/Entities/GameClock.cpp
@@ -195,6 +196,7 @@ set(GAME_HEADERS
         Classes/Components/Satisfaction.h
         Classes/Components/Time.h
         Classes/Components/SpriteComponent.h
+        Classes/Components/LabelComponent.h
         Classes/Entities/Station.h
         Classes/Entities/Train.h
         Classes/Entities/GameClock.h
