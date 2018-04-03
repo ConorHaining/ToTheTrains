@@ -9,7 +9,7 @@
 #include <ComponentInterface.h>
 
 class Time: public ComponentInterface {
-private:
+public:
     int hour;
     int minute;
     int second;
