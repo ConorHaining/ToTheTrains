@@ -1,6 +1,8 @@
 #include <Entities/Station.h>
 #include <Components/SpriteComponent.h>
 #include <Systems/StationRenderSystem.h>
+#include <Entities/GameClock.h>
+#include <Components/Time.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -45,6 +47,12 @@ bool StationScene::init()
     log("Adding Station Entity");
     entityManager->createEntity("Croy", stationEntity);
     log("Created Station Entity");
+
+    log("Creating Game Clock");
+    GameClock* gameClock = new GameClock();
+    entityManager->createEntity("clock", gameClock);
+    Time* time = new Time();
+    entityManager->addEntityToComponent(gameClock, time);
 
     // Attach Components
     SpriteComponent* sprite = new SpriteComponent();
