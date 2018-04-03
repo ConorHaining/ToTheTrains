@@ -7,7 +7,12 @@
 
 
 class GameTimeSystem {
-
+private:
+    const int multipler = 60;
+public:
+    void setTime(int hour, int minute);
+    void incrementTime(float delta);
+    void drawTime();
 };
 
 
