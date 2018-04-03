@@ -5,10 +5,13 @@
 #ifndef PROJ_ANDROID_STUDIO_GAMETIMESYSTEM_H
 #define PROJ_ANDROID_STUDIO_GAMETIMESYSTEM_H
 
+#include "cocos2d.h"
+
+USING_NS_CC;
 
 class GameTimeSystem {
 private:
-    const int multipler = 60;
+    const int multiplier = 100;
     Scene* scene;
 public:
     GameTimeSystem(Scene* scene);
