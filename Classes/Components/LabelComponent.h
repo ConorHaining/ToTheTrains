@@ -5,11 +5,17 @@
 #ifndef PROJ_ANDROID_STUDIO_LABELCOMPONENT_H
 #define PROJ_ANDROID_STUDIO_LABELCOMPONENT_H
 
-
+#include "cocos2d.h"
 #include "../ComponentInterface.h"
 
-class LabelComponent : public ComponentInterface{
+USING_NS_CC;
 
+class LabelComponent : public ComponentInterface{
+private:
+    Label* label;
+public:
+    void createLabel(std::string text);
+    Label* getLabel();
 };
 
 
