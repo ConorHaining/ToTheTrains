@@ -6,7 +6,12 @@
 #include <Components/Time.h>
 #include <Entities/GameClock.h>
 #include <cmath>
+#include <Components/LabelComponent.h>
 #include "GameTimeSystem.h"
+
+GameTimeSystem::GameTimeSystem(Scene* scene) {
+    this->scene = scene;
+}
 
 void GameTimeSystem::setTime(int hour, int minute) {
     EntityManager* entityManager = EntityManager::getInstance();
@@ -36,5 +41,18 @@ void GameTimeSystem::incrementTime(float delta) {
 }
 
 void GameTimeSystem::drawTime() {
+    EntityManager* entityManager = EntityManager::getInstance();
+    GameClock* gameClock = (GameClock*)entityManager->getEntity("clock");
+
+    Time* time = (Time*)gameClock->getComponent(1);
+    LabelComponent* label = (LabelComponent*)gameClock->getComponent(2);
+
+    auto dirs = Director::getInstance();
+    Size visibleSize = dirs->getVisibleSize();
+    Vec2 origin = dirs->getVisibleOrigin();
+
+    label->getLabel()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+
+    this->scene->addChild(label);
 
 }
