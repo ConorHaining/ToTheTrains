@@ -11,7 +11,7 @@ USING_NS_CC;
 
 class GameTimeSystem {
 private:
-    const int multiplier = 100;
+    const int multiplier = 600;
     Scene* scene;
     std::string zerofill(int i);
 public:

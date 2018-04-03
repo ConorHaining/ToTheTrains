@@ -58,7 +58,7 @@ void GameTimeSystem::drawTime() {
     LabelComponent* label = (LabelComponent*)gameClock->getComponent(2);
 
     std::stringstream ss;
-    ss << zerofill(time->hour) << ":" << zerofill(time->minute) << ":" << zerofill(time->second);
+    ss << zerofill(time->hour) << ":" << zerofill(time->minute);
     std::string timeText = ss.str();
 
     label->getLabel()->setString(timeText);
