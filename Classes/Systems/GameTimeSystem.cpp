@@ -58,7 +58,7 @@ void GameTimeSystem::drawTime() {
     LabelComponent* label = (LabelComponent*)gameClock->getComponent(2);
 
     std::stringstream ss;
-    ss << time->hour << ":" << time->minute << ":" << time->second;
+    ss << zerofill(time->hour) << ":" << zerofill(time->minute) << ":" << zerofill(time->second);
     std::string timeText = ss.str();
 
     label->getLabel()->setString(timeText);
@@ -71,4 +71,16 @@ void GameTimeSystem::drawTime() {
 
     this->scene->addChild(label->getLabel());
 
+}
+
+std::string GameTimeSystem::zerofill(int i) {
+    std::stringstream ss;
+
+    if (i < 10) {
+        ss << "0" << i;
+    } else {
+        ss << i;
+    }
+
+    return ss.str();
 }

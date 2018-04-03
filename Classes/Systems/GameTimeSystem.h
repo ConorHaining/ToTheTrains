@@ -13,6 +13,7 @@ class GameTimeSystem {
 private:
     const int multiplier = 100;
     Scene* scene;
+    std::string zerofill(int i);
 public:
     GameTimeSystem(Scene* scene);
     void setTime(int hour, int minute);
