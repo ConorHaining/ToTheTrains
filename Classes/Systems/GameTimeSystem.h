@@ -1,0 +1,14 @@
+//
+// Created by conor on 03/04/18.
+//
+
+#ifndef PROJ_ANDROID_STUDIO_GAMETIMESYSTEM_H
+#define PROJ_ANDROID_STUDIO_GAMETIMESYSTEM_H
+
+
+class GameTimeSystem {
+
+};
+
+
+#endif //PROJ_ANDROID_STUDIO_GAMETIMESYSTEM_H

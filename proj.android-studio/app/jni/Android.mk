@@ -31,7 +31,8 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/Station.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/Train.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/GameClock.cpp \
-                   $(LOCAL_PATH)/../../../Classes/Systems/StationRenderSystem.cpp
+                   $(LOCAL_PATH)/../../../Classes/Systems/StationRenderSystem.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Systems/GameTimeSystem.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
