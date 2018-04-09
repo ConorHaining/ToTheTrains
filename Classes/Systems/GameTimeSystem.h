@@ -19,6 +19,7 @@ public:
     void setTime(int hour, int minute);
     void incrementTime(float delta);
     void drawTime();
+    void drawTimeFirst();
 };
 
 

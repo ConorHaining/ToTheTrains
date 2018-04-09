@@ -71,7 +71,7 @@ bool StationScene::init()
     entityManager->addEntityToComponent(gameClock, labelComponent);
     gameTimeSystem = new GameTimeSystem(this);
     gameTimeSystem->setTime(12, 0);
-    gameTimeSystem->drawTime();
+    gameTimeSystem->drawTimeFirst();
     log("Created Game Clock");
 
 

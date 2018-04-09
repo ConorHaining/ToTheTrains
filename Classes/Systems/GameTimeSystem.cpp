@@ -63,6 +63,16 @@ void GameTimeSystem::drawTime() {
 
     label->getLabel()->setString(timeText);
 
+}
+
+void GameTimeSystem::drawTimeFirst() {
+    EntityManager* entityManager = EntityManager::getInstance();
+    GameClock* gameClock = (GameClock*)entityManager->getEntity("clock");
+
+    LabelComponent* label = (LabelComponent*)gameClock->getComponent(2);
+
+    drawTime();
+
     auto dirs = Director::getInstance();
     Size visibleSize = dirs->getVisibleSize();
     Vec2 origin = dirs->getVisibleOrigin();
@@ -70,7 +80,6 @@ void GameTimeSystem::drawTime() {
     label->getLabel()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
     this->scene->addChild(label->getLabel());
-
 }
 
 std::string GameTimeSystem::zerofill(int i) {
