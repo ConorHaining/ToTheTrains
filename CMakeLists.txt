@@ -177,6 +177,7 @@ set(GAME_SRC
         Classes/Entities/GameClock.cpp
         Classes/Systems/StationRenderSystem.cpp
         Classes/Systems/GameTimeSystem.cpp
+        Classes/Systems/TimetableSystem.cpp
         )
 
 set(GAME_HEADERS
@@ -202,6 +203,7 @@ set(GAME_HEADERS
         Classes/Entities/GameClock.h
         Classes/Systems/StationRenderSystem.h
         Classes/Systems/GameTimeSystem.h
+        Classes/Systems/TimetableSystem.h
         )
 
 # add the executable
