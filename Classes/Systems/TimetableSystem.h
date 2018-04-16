@@ -9,9 +9,18 @@
 
 // for convenience
 using json = nlohmann::json;
+using namespace std;
 
 class TimetableSystem {
+public:
+    void loadInTimetable(string jsonString);
+    json peakNextTrain();
+    void popNextTrain();
+private:
+    json timetable;
+    json pastTrains;
 
+    void moveTimetableForDepartedTrain();
 };
 
 
