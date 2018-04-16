@@ -5,6 +5,10 @@
 #ifndef PROJ_ANDROID_STUDIO_TIMETABLESYSTEM_H
 #define PROJ_ANDROID_STUDIO_TIMETABLESYSTEM_H
 
+#include <json.hpp>
+
+// for convenience
+using json = nlohmann::json;
 
 class TimetableSystem {
 
