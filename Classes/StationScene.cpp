@@ -88,10 +88,12 @@ void StationScene::update(float delta) {
     gameTimeSystem->drawTime();
 
     // Check Time
-    GameClock* gameClock = gameTimeSystem->getTime();
+    rapidjson::Value& nextTrain = timetableSystem->checkNextTrain();
+    bool isTrainDue = gameTimeSystem->equalTime(nextTrain["arrivalTime"].GetString());
 
+    if (isTrainDue) {
+        // Spawn and move train
+        // Update Timetable
+    }
 
-
-    // If current time is equal to event on timetable
-    // Spawn and move train
 }

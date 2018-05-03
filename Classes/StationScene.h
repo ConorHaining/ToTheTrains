@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Systems/GameTimeSystem.h"
+#include "Systems/TimetableSystem.h"
 
 class StationScene : public cocos2d::Scene
 {
