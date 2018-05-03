@@ -7,8 +7,9 @@
 
 
 #include <string>
+#include <ComponentInterface.h>
 
-class TrainType {
+class TrainType : public ComponentInterface {
 private:
     int length;
     std::string trainClass;

@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_DEPARTURETIME_H
 
 
-class DepartureTime {
+#include <ComponentInterface.h>
+
+class DepartureTime : public ComponentInterface {
 private:
     int hour;
     int minute;

@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_ARRIVALTIME_H
 
 
-class ArrivalTime {
+#include <ComponentInterface.h>
+
+class ArrivalTime : public ComponentInterface {
 private:
     int hour;
     int minute;

@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_STOPPINGLOCATION_H
 
 
-class StoppingLocation {
+#include <ComponentInterface.h>
+
+class StoppingLocation : public ComponentInterface {
 private:
     int x;
     int y;

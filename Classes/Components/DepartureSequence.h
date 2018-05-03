@@ -6,10 +6,11 @@
 #define PROJ_ANDROID_STUDIO_DEPARTURESEQUENCE_H
 
 
+#include <ComponentInterface.h>
 #include "cocos2d.h"
 #include "DespawnLocation.h"
 
-class DepartureSequence {
+class DepartureSequence : public ComponentInterface {
 private:
     cocos2d::MoveTo* movement;
 public:

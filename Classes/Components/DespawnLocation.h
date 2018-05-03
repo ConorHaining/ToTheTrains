@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_DESPAWNLOCATION_H
 
 
-class DespawnLocation {
+#include <ComponentInterface.h>
+
+class DespawnLocation : public ComponentInterface {
 private:
     int x;
     int y;

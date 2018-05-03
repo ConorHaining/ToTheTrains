@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_SPAWNLOCATION_H
 
 
-class SpawnLocation {
+#include <ComponentInterface.h>
+
+class SpawnLocation : public ComponentInterface {
 private:
     int x;
     int y;

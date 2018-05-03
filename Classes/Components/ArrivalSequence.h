@@ -6,10 +6,11 @@
 #define PROJ_ANDROID_STUDIO_ARRIVALSEQUENCE_H
 
 
+#include <ComponentInterface.h>
 #include "cocos2d.h"
 #include "StoppingLocation.h"
 
-class ArrivalSequence {
+class ArrivalSequence : public ComponentInterface {
 private:
     cocos2d::MoveTo* movement;
 public:

@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_SATISFACTION_H
 
 
-class Satisfaction {
+#include <ComponentInterface.h>
+
+class Satisfaction : public ComponentInterface {
 private:
     float timeliness;
     float happiness;
