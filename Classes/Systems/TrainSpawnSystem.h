@@ -1,0 +1,14 @@
+//
+// Created by conor on 03/05/18.
+//
+
+#ifndef PROJ_ANDROID_STUDIO_TRAINSPAWNSYSTEM_H
+#define PROJ_ANDROID_STUDIO_TRAINSPAWNSYSTEM_H
+
+
+class TrainSpawnSystem {
+
+};
+
+
+#endif //PROJ_ANDROID_STUDIO_TRAINSPAWNSYSTEM_H
