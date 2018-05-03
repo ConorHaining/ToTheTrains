@@ -48,6 +48,10 @@ void GameTimeSystem::incrementTime(float delta) {
         time->minute = 0;
         time->hour++;
     }
+
+    if (time->hour >= 24) {
+        time->hour = 0;
+    }
 }
 
 void GameTimeSystem::drawTime() {
