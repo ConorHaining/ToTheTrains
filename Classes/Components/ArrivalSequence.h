@@ -14,7 +14,7 @@ class ArrivalSequence : public ComponentInterface {
 private:
     cocos2d::MoveTo* movement;
 public:
-    void setMovement(StoppingLocation stoppingLocation);
+    void setMovement(StoppingLocation* stoppingLocation);
 
     cocos2d::MoveTo *getMovement() const;
 

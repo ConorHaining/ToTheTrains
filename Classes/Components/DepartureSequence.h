@@ -14,7 +14,7 @@ class DepartureSequence : public ComponentInterface {
 private:
     cocos2d::MoveTo* movement;
 public:
-    void setMovement(DespawnLocation despawnLocation);
+    void setMovement(DespawnLocation* despawnLocation);
 
     cocos2d::MoveTo *getMovement() const;
 
