@@ -35,8 +35,8 @@ void GameTimeSystem::incrementTime(float delta) {
     time->delta += delta * this->multiplier;
 
     if (time->delta >= 1) {
+        time->second += time->delta;
         time->delta = 0;
-        time->second++;
     }
 
     if (time->second >= 60) {
