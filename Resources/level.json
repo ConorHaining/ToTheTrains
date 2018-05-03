@@ -1,0 +1,19 @@
+{
+	"timetable": [
+		{
+		  "arrivalTime": "12:03",
+		  "departureTime": "12:20",
+		  "platform": "1"
+		},
+		{
+		  "arrivalTime": "12:03",
+		  "departureTime": "12:20",
+		  "platform": "1"
+		},
+		{
+		  "arrivalTime": "12:03",
+		  "departureTime": "12:20",
+		  "platform": "1"
+		}
+	]
+}
