@@ -78,6 +78,8 @@ bool StationScene::init()
     timetableSystem = new TimetableSystem();
     timetableSystem->loadInTimetable("hello");
 
+    trainSpawnSystem = new TrainSpawnSystem(this);
+
     this->scheduleUpdate();
 
     return true;
@@ -93,7 +95,9 @@ void StationScene::update(float delta) {
 
     if (isTrainDue) {
         // Spawn and move train
+        trainSpawnSystem->spawnTrain(nextTrain);
         // Update Timetable
+        timetableSystem->markAsComplete(nextTrain)
     }
 
 }

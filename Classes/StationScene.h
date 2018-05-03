@@ -1,6 +1,7 @@
 #ifndef __STATION_SCENE_H__
 #define __STATION_SCENE_H__
 
+#include <Systems/TrainSpawnSystem.h>
 #include "cocos2d.h"
 #include "Systems/GameTimeSystem.h"
 #include "Systems/TimetableSystem.h"
@@ -10,6 +11,7 @@ class StationScene : public cocos2d::Scene
 private:
     GameTimeSystem* gameTimeSystem;
     TimetableSystem* timetableSystem;
+    TrainSpawnSystem* trainSpawnSystem;
 public:
     static cocos2d::Scene* createScene();
 
