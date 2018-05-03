@@ -22,3 +22,23 @@ void TimetableSystem::loadInTimetable(string fileName) {
     cocos2d::log("Document is parsed");
 
 }
+
+rapidjson::Value& TimetableSystem::checkNextTrain() {
+
+    if (this->timetable.HasMember("timetable") && this->timetable["timetable"].IsArray()) {
+        cocos2d::log("Timetable is there");
+
+        const rapidjson::Value& actualTimetable = this->timetable["timetable"];
+
+        const rapidjson::Value& nextRecord = actualTimetable[(SizeType)0]; // TODO Explain why SizeType
+
+        return (rapidjson::Value &) nextRecord;
+
+
+    } else {
+        cocos2d::log("Timetable not is there");
+        // TODO Error Handle
+
+    }
+
+}
