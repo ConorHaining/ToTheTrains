@@ -5,20 +5,19 @@
 #ifndef PROJ_ANDROID_STUDIO_TIMETABLESYSTEM_H
 #define PROJ_ANDROID_STUDIO_TIMETABLESYSTEM_H
 
-#include <json.hpp>
+#include "include/rapidjson/document.h"
 
-// for convenience
-using json = nlohmann::json;
 using namespace std;
+using namespace rapidjson;
 
 class TimetableSystem {
 public:
-    void loadInTimetable(string jsonString);
-    json peakNextTrain();
+    void loadInTimetable(string fileName);
+    rapidjson::Value & checkNextTrain();
     void popNextTrain();
 private:
-    json timetable;
-    json pastTrains;
+    Document timetable;
+    Document pastTrains;
 
     void moveTimetableForDepartedTrain();
 };
