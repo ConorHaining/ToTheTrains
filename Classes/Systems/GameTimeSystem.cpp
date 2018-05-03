@@ -2,13 +2,14 @@
 // Created by conor on 03/04/18.
 //
 
+#include "GameTimeSystem.h"
 #include <EntityManager.h>
 #include <Components/Time.h>
 #include <Entities/GameClock.h>
 #include <cmath>
 #include <Components/LabelComponent.h>
-#include "GameTimeSystem.h"
-#include <string.h>
+#include <sstream>
+#include <string>
 
 GameTimeSystem::GameTimeSystem(Scene* scene) {
     this->scene = scene;
@@ -103,4 +104,21 @@ GameClock *GameTimeSystem::getTime() {
     GameClock* gameClock = (GameClock*)entityManager->getEntity("clock");
 
     return gameClock;
+}
+
+bool GameTimeSystem::equalTime(const char* time) {
+    GameClock* gameClock = this->getTime();
+    Time *gameTime = (Time *) gameClock->getComponent(1);
+
+    // Time is in format HH:MM
+    std::string timeString(time);
+
+    std::string hour = timeString.substr(0, 2);
+    std::string minute = timeString.substr(3, 2);
+
+    int hourInt = std::atoi(hour.c_str());
+    int minuteInt = std::atoi(minute.c_str());
+
+    return (gameTime->hour == hourInt) && (gameTime->minute == minuteInt);
+
 }
