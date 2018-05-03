@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_TRAIN_H
 
 
-class Train {
+#include <EntityInterface.h>
+
+class Train : public EntityInterface {
 
 };
 
