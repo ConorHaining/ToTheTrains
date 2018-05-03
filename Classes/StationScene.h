@@ -8,6 +8,7 @@ class StationScene : public cocos2d::Scene
 {
 private:
     GameTimeSystem* gameTimeSystem;
+    TimetableSystem* timetableSystem;
 public:
     static cocos2d::Scene* createScene();
 

@@ -5,6 +5,7 @@
 #include <Components/Time.h>
 #include <Components/LabelComponent.h>
 #include <Systems/GameTimeSystem.h>
+#include <Systems/TimetableSystem.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -74,6 +75,8 @@ bool StationScene::init()
     gameTimeSystem->drawTimeFirst();
     log("Created Game Clock");
 
+    timetableSystem = new TimetableSystem();
+    timetableSystem->loadInTimetable("hello");
 
     this->scheduleUpdate();
 
@@ -83,4 +86,12 @@ bool StationScene::init()
 void StationScene::update(float delta) {
     gameTimeSystem->incrementTime(delta);
     gameTimeSystem->drawTime();
+
+    // Check Time
+    GameClock* gameClock = gameTimeSystem->getTime();
+
+
+
+    // If current time is equal to event on timetable
+    // Spawn and move train
 }
