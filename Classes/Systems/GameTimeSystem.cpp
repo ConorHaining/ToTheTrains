@@ -97,3 +97,10 @@ std::string GameTimeSystem::zerofill(int i) {
 
     return ss.str();
 }
+
+GameClock *GameTimeSystem::getTime() {
+    EntityManager* entityManager = EntityManager::getInstance();
+    GameClock* gameClock = (GameClock*)entityManager->getEntity("clock");
+
+    return gameClock;
+}

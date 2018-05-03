@@ -17,6 +17,7 @@ private:
 public:
     GameTimeSystem(Scene* scene);
     void setTime(int hour, int minute);
+    GameClock* getTime();
     void incrementTime(float delta);
     void drawTime();
     void drawTimeFirst();
