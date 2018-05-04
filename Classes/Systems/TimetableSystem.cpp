@@ -30,9 +30,15 @@ rapidjson::Value& TimetableSystem::checkNextTrain() {
 
         const rapidjson::Value& actualTimetable = this->timetable["timetable"];
 
-        const rapidjson::Value& nextRecord = actualTimetable[(SizeType)0]; // TODO Explain why SizeType
+        for (SizeType i = 0; i < actualTimetable.Size(); i++) {
 
-        return (rapidjson::Value &) nextRecord;
+            if(!actualTimetable[i]["complete"].GetBool()) {
+
+                return (rapidjson::Value&) actualTimetable[i];
+
+            }
+
+        }
 
 
     } else {
