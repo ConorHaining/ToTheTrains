@@ -94,10 +94,13 @@ void StationScene::update(float delta) {
     bool isTrainDue = gameTimeSystem->equalTime(nextTrain["arrivalTime"].GetString());
 
     if (isTrainDue) {
+        cocos2d::log("Train due");
         // Spawn and move train
         trainSpawnSystem->spawnTrain(nextTrain);
         // Update Timetable
-        timetableSystem->markAsComplete(nextTrain)
+        timetableSystem->markAsComplete();
+    } else {
+        cocos2d::log("No train due");
     }
 
 }
