@@ -26,16 +26,16 @@ void TimetableSystem::loadInTimetable(string fileName) {
 rapidjson::Value& TimetableSystem::checkNextTrain() {
 
     if (this->timetable.HasMember("timetable") && this->timetable["timetable"].IsArray()) {
-        cocos2d::log("Timetable is there");
 
-        const rapidjson::Value& actualTimetable = this->timetable["timetable"];
+        rapidjson::Value& actualTimetable = this->timetable["timetable"];
 
         for (SizeType i = 0; i < actualTimetable.Size(); i++) {
 
-            if(!actualTimetable[i]["complete"].GetBool()) {
+            rapidjson::Value& nextRecord = actualTimetable[i];
 
-                return (rapidjson::Value&) actualTimetable[i];
-
+            if(!nextRecord["complete"].GetBool()) {
+                cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
+                return actualTimetable[i];
             }
 
         }
@@ -51,6 +51,22 @@ rapidjson::Value& TimetableSystem::checkNextTrain() {
 
 void TimetableSystem::markAsComplete() {
 
+    rapidjson::Value& actualTimetable = this->timetable["timetable"];
+//    cocos2d::log("Pre loop");
+    for (SizeType i = 0; i < actualTimetable.Size(); i++) {
 
+        rapidjson::Value& nextRecord = actualTimetable[i];
+//        cocos2d::log("Got Record");
+
+        if(!nextRecord["complete"].GetBool()) {
+//            cocos2d::log("if not bool");
+//            cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
+            nextRecord["complete"].SetBool(true);
+//            cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
+//            cocos2d::log("Changed value");
+            return;
+        }
+
+    }
 
 }
