@@ -18,5 +18,35 @@
 			"platform": "1",
 			"complete": false
 		}
-	]
+	],
+	"platforms": {
+      "1" : {
+        "spawnLocation": {
+          "x": 135,
+          "y": -200
+        },
+        "stoppingLocation": {
+          "x": 135,
+          "y": 250
+        },
+        "despawnLocation": {
+          "x": 135,
+          "y": 750
+        }
+      },
+      "2" : {
+        "spawnLocation": {
+          "x": 182,
+          "y": 750
+        },
+        "stoppingLocation": {
+          "x": 182,
+          "y": 250
+        },
+        "despawnLocation": {
+          "x": 182,
+          "y": -200
+        }
+      }
+    }
 }
