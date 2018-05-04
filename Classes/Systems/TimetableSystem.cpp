@@ -48,3 +48,9 @@ rapidjson::Value& TimetableSystem::checkNextTrain() {
     }
 
 }
+
+void TimetableSystem::markAsComplete() {
+
+
+
+}

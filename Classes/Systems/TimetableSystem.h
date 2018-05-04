@@ -14,7 +14,8 @@ class TimetableSystem {
 public:
     void loadInTimetable(string fileName);
     rapidjson::Value & checkNextTrain();
-    void popNextTrain();
+    void markAsComplete();
+
 private:
     Document timetable;
     Document pastTrains;
