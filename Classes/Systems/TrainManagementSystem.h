@@ -10,7 +10,7 @@
 using namespace std;
 using namespace rapidjson;
 
-class TimetableSystem {
+class TrainManagementSystem {
 public:
     void loadInTimetable(string fileName);
     rapidjson::Value & checkNextTrain();

@@ -5,11 +5,11 @@
 #include <fstream>
 #include <iostream>
 #include "cocos2d.h"
-#include "TimetableSystem.h"
+#include "TrainManagementSystem.h"
 
 USING_NS_CC;
 
-void TimetableSystem::loadInTimetable(string fileName) {
+void TrainManagementSystem::loadInTimetable(string fileName) {
 
     string fileContents;
     fileContents = cocos2d::FileUtils::getInstance()->getStringFromFile("level.json");
@@ -23,7 +23,7 @@ void TimetableSystem::loadInTimetable(string fileName) {
 
 }
 
-rapidjson::Value& TimetableSystem::checkNextTrain() {
+rapidjson::Value& TrainManagementSystem::checkNextTrain() {
 
     if (this->timetable.HasMember("timetable") && this->timetable["timetable"].IsArray()) {
 
@@ -49,7 +49,7 @@ rapidjson::Value& TimetableSystem::checkNextTrain() {
 
 }
 
-void TimetableSystem::markAsComplete() {
+void TrainManagementSystem::markAsComplete() {
 
     rapidjson::Value& actualTimetable = this->timetable["timetable"];
 //    cocos2d::log("Pre loop");

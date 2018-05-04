@@ -4,13 +4,13 @@
 #include <Systems/TrainSpawnSystem.h>
 #include "cocos2d.h"
 #include "Systems/GameTimeSystem.h"
-#include "Systems/TimetableSystem.h"
+#include "Systems/TrainManagementSystem.h"
 
 class StationScene : public cocos2d::Scene
 {
 private:
     GameTimeSystem* gameTimeSystem;
-    TimetableSystem* timetableSystem;
+    TrainManagementSystem* trainManagementSystem;
     TrainSpawnSystem* trainSpawnSystem;
 public:
     static cocos2d::Scene* createScene();

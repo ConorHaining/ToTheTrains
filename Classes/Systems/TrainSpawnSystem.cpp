@@ -15,17 +15,17 @@ void TrainSpawnSystem::spawnTrain(rapidjson::Value &timetableRecord) {
 
     // TODO unhardcode these values
     SpawnLocation* spawnLocation = new SpawnLocation();
-    spawnLocation->setX(135);
-    spawnLocation->setY(-100);
+    spawnLocation->setX(182);
+    spawnLocation->setY(750);
 
     // Get Stop Location
     StoppingLocation* stoppingLocation = new StoppingLocation();
-    stoppingLocation->setX(135);
-    stoppingLocation->setY(500);
+    stoppingLocation->setX(182);
+    stoppingLocation->setY(250);
 
     // Get Despawn Location
     DespawnLocation* despawnLocation = new DespawnLocation();
-    despawnLocation->setX(135);
+    despawnLocation->setX(182);
     despawnLocation->setY(1000);
 
     // Create Arrival Sequence

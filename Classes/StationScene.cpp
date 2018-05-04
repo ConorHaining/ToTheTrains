@@ -5,7 +5,7 @@
 #include <Components/Time.h>
 #include <Components/LabelComponent.h>
 #include <Systems/GameTimeSystem.h>
-#include <Systems/TimetableSystem.h>
+#include <Systems/TrainManagementSystem.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -75,8 +75,8 @@ bool StationScene::init()
     gameTimeSystem->drawTimeFirst();
     log("Created Game Clock");
 
-    timetableSystem = new TimetableSystem();
-    timetableSystem->loadInTimetable("hello");
+    trainManagementSystem = new TrainManagementSystem();
+    trainManagementSystem->loadInTimetable("hello");
 
     trainSpawnSystem = new TrainSpawnSystem(this);
 
@@ -90,7 +90,7 @@ void StationScene::update(float delta) {
     gameTimeSystem->drawTime();
 
     // Check Time
-    rapidjson::Value& nextTrain = timetableSystem->checkNextTrain();
+    rapidjson::Value& nextTrain = trainManagementSystem->checkNextTrain();
     bool isTrainDue = gameTimeSystem->equalTime(nextTrain["arrivalTime"].GetString());
 
     if (isTrainDue) {
@@ -98,7 +98,7 @@ void StationScene::update(float delta) {
         // Spawn and move train
         trainSpawnSystem->spawnTrain(nextTrain);
         // Update Timetable
-        timetableSystem->markAsComplete();
+        trainManagementSystem->markAsComplete();
     } else {
         cocos2d::log("No train due");
     }
