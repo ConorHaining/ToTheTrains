@@ -3,17 +3,20 @@
 		{
 		  "arrivalTime": "12:03",
 		  "departureTime": "12:20",
-		  "platform": "1"
+		  "platform": "1",
+		  "complete": false
 		},
 		{
-		  "arrivalTime": "12:03",
-		  "departureTime": "12:20",
-		  "platform": "1"
+			"arrivalTime": "13:03",
+			"departureTime": "12:20",
+			"platform": "1",
+			"complete": false
 		},
 		{
-		  "arrivalTime": "12:03",
-		  "departureTime": "12:20",
-		  "platform": "1"
+			"arrivalTime": "14:03",
+			"departureTime": "12:20",
+			"platform": "1",
+			"complete": false
 		}
 	]
 }
