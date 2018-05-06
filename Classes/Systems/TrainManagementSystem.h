@@ -23,13 +23,14 @@ public:
     void setActiveTrain();
     TrainManagementSystem(cocos2d::Scene *scene);
     void spawnTrain(rapidjson::Value &timetableRecord);
+    bool isPlatformFull(const char* platform);
 private:
     Document level;
     cocos2d::Scene *scene;
     std::vector<ActiveTrain> activeTrains {};
     void addActiveTrain(const char* platform, Train* train);
     void removeActiveTrain(Train* train);
-    bool isPlatformFull(const char* platform);
+
 };
 
 
