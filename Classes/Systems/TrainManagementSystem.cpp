@@ -123,8 +123,33 @@ void TrainManagementSystem::spawnTrain(rapidjson::Value &timetableRecord) {
 
     this->scene->addChild(trainSprite);
     trainSprite->runAction(arrivalSequence->getMovement());
+    this->addActiveTrain(platform, train);
 }
 
 TrainManagementSystem::TrainManagementSystem(cocos2d::Scene *scene) {
     this->scene = scene;
+}
+
+void TrainManagementSystem::addActiveTrain(const char *platform, Train* train) {
+
+    ActiveTrain activeTrain;
+    activeTrain.platform = platform;
+    activeTrain.train = train;
+
+    this->activeTrains.push_back(activeTrain);
+
+}
+
+bool TrainManagementSystem::isPlatformFull(const char *platform) {
+
+    for (std::vector<ActiveTrain>::iterator it = activeTrains.begin() ; it != activeTrains.end() ; ++it) {
+
+        if((*it).platform == platform) {
+            return true;
+        }
+
+    }
+
+    return false;
+
 }
