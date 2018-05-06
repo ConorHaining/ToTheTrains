@@ -15,9 +15,11 @@ public:
     void loadInLevel(string fileName);
     rapidjson::Value & checkNextTrain();
     void setActiveTrain();
-
+    TrainManagementSystem(cocos2d::Scene *scene);
+    void spawnTrain(rapidjson::Value &timetableRecord);
 private:
     Document level;
+    cocos2d::Scene *scene;
 };
 
 

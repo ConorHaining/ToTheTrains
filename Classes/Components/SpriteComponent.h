@@ -6,7 +6,7 @@
 #define PROJ_ANDROID_STUDIO_SPRITECOMPONENT_H
 
 
-#include "cocos2d.h";
+#include "cocos2d.h"
 #include "../ComponentInterface.h"
 USING_NS_CC;
 
