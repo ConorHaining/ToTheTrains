@@ -178,7 +178,6 @@ set(GAME_SRC
         Classes/Systems/StationRenderSystem.cpp
         Classes/Systems/GameTimeSystem.cpp
         Classes/Systems/TrainManagementSystem.cpp
-        Classes/Systems/TrainSpawnSystem.cpp
         )
 
 set(GAME_HEADERS
@@ -205,7 +204,6 @@ set(GAME_HEADERS
         Classes/Systems/StationRenderSystem.h
         Classes/Systems/GameTimeSystem.h
         Classes/Systems/TrainManagementSystem.h
-        Classes/Systems/TrainSpawnSystem.h
         )
 
 # add the executable
