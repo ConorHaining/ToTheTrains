@@ -9,7 +9,7 @@
 
 USING_NS_CC;
 
-void TrainManagementSystem::loadInTimetable(string fileName) {
+void TrainManagementSystem::loadInLevel(string fileName) {
 
     string fileContents;
     fileContents = cocos2d::FileUtils::getInstance()->getStringFromFile("level.json");
@@ -18,24 +18,21 @@ void TrainManagementSystem::loadInTimetable(string fileName) {
     fileContentsCstring = fileContents.c_str();
     cocos2d::log("JSON is: %s", fileContentsCstring);
 
-    this->timetable.Parse(fileContentsCstring);
+    this->level.Parse(fileContentsCstring);
     cocos2d::log("Document is parsed");
-
 }
 
 rapidjson::Value& TrainManagementSystem::checkNextTrain() {
 
-    if (this->timetable.HasMember("timetable") && this->timetable["timetable"].IsArray()) {
+    if (this->level.HasMember("timetable") && this->level["timetable"].IsArray()) {
 
-        rapidjson::Value& actualTimetable = this->timetable["timetable"];
+        for (SizeType i = 0; i < this->level["timetable"].Size(); i++) {
 
-        for (SizeType i = 0; i < actualTimetable.Size(); i++) {
-
-            rapidjson::Value& nextRecord = actualTimetable[i];
+            rapidjson::Value& nextRecord = this->level["timetable"][i];
 
             if(!nextRecord["complete"].GetBool()) {
                 cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
-                return actualTimetable[i];
+                return this->level["timetable"][i];
             }
 
         }
@@ -49,13 +46,13 @@ rapidjson::Value& TrainManagementSystem::checkNextTrain() {
 
 }
 
-void TrainManagementSystem::markAsComplete() {
+void TrainManagementSystem::setActiveTrain() {
 
-    rapidjson::Value& actualTimetable = this->timetable["timetable"];
+
 //    cocos2d::log("Pre loop");
-    for (SizeType i = 0; i < actualTimetable.Size(); i++) {
+    for (SizeType i = 0; i < this->level["timetable"].Size(); i++) {
 
-        rapidjson::Value& nextRecord = actualTimetable[i];
+        rapidjson::Value& nextRecord = this->level["timetable"][i];
 //        cocos2d::log("Got Record");
 
         if(!nextRecord["complete"].GetBool()) {

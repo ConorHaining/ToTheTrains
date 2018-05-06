@@ -76,7 +76,7 @@ bool StationScene::init()
     log("Created Game Clock");
 
     trainManagementSystem = new TrainManagementSystem();
-    trainManagementSystem->loadInTimetable("hello");
+    trainManagementSystem->loadInLevel("hello");
 
     trainSpawnSystem = new TrainSpawnSystem(this);
 
@@ -98,7 +98,7 @@ void StationScene::update(float delta) {
         // Spawn and move train
         trainSpawnSystem->spawnTrain(nextTrain);
         // Update Timetable
-        trainManagementSystem->markAsComplete();
+        trainManagementSystem->setActiveTrain();
     } else {
         cocos2d::log("No train due");
     }

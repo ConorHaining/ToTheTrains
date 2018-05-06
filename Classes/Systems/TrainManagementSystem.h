@@ -12,15 +12,12 @@ using namespace rapidjson;
 
 class TrainManagementSystem {
 public:
-    void loadInTimetable(string fileName);
+    void loadInLevel(string fileName);
     rapidjson::Value & checkNextTrain();
-    void markAsComplete();
+    void setActiveTrain();
 
 private:
-    Document timetable;
-    Document pastTrains;
-
-    void moveTimetableForDepartedTrain();
+    Document level;
 };
 
 
