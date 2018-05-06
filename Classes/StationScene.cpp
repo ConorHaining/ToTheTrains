@@ -92,13 +92,20 @@ void StationScene::update(float delta) {
     bool isTrainDue = gameTimeSystem->equalTime(nextTrain["arrivalTime"].GetString());
 
     if (isTrainDue) {
-        cocos2d::log("Train due");
+//        cocos2d::log("Train due");
+
         // Spawn and move train
-        trainManagementSystem->spawnTrain(nextTrain);
-        // Update Timetable
-        trainManagementSystem->setActiveTrain();
+        if (!trainManagementSystem->isPlatformFull(nextTrain["platform"].GetString())) {
+            trainManagementSystem->spawnTrain(nextTrain);
+            // Update Timetable
+            trainManagementSystem->setActiveTrain();
+        } else {
+            cocos2d::log("Platform full!");
+        }
+
+
     } else {
-        cocos2d::log("No train due");
+//        cocos2d::log("No train due");
     }
 
 }
