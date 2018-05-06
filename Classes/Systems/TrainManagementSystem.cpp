@@ -38,7 +38,7 @@ rapidjson::Value& TrainManagementSystem::checkNextTrain() {
             rapidjson::Value& nextRecord = this->level["timetable"][i];
 
             if(!nextRecord["complete"].GetBool()) {
-                cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
+//                cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
                 return this->level["timetable"][i];
             }
 
@@ -144,7 +144,9 @@ bool TrainManagementSystem::isPlatformFull(const char *platform) {
 
     for (std::vector<ActiveTrain>::iterator it = activeTrains.begin() ; it != activeTrains.end() ; ++it) {
 
-        if((*it).platform == platform) {
+        cocos2d::log("ActiveTrain Platform: %s, passed in platform: %s | equal %d", (*it).platform, platform, strcmp((*it).platform, platform));
+
+        if(strcmp((*it).platform, platform) == 0) {
             return true;
         }
 
