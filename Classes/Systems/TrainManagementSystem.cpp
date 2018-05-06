@@ -76,22 +76,24 @@ void TrainManagementSystem::setActiveTrain() {
 }
 
 void TrainManagementSystem::spawnTrain(rapidjson::Value &timetableRecord) {
-    // Get Spawn Location
 
-    // TODO unhardcode these values
+    // Get Spawn Location
+    const char * platform = timetableRecord["platform"].GetString();
+    rapidjson::Value& platformDetails = this->level["platforms"][platform];
+
     SpawnLocation* spawnLocation = new SpawnLocation();
-    spawnLocation->setX(182);
-    spawnLocation->setY(750);
+    spawnLocation->setX(platformDetails["spawnLocation"]["x"].GetInt());
+    spawnLocation->setY(platformDetails["spawnLocation"]["y"].GetInt());
 
     // Get Stop Location
     StoppingLocation* stoppingLocation = new StoppingLocation();
-    stoppingLocation->setX(182);
-    stoppingLocation->setY(250);
+    stoppingLocation->setX(platformDetails["stoppingLocation"]["x"].GetInt());
+    stoppingLocation->setY(platformDetails["stoppingLocation"]["y"].GetInt());
 
     // Get Despawn Location
     DespawnLocation* despawnLocation = new DespawnLocation();
-    despawnLocation->setX(182);
-    despawnLocation->setY(1000);
+    despawnLocation->setX(platformDetails["despawnLocation"]["x"].GetInt());
+    despawnLocation->setY(platformDetails["despawnLocation"]["y"].GetInt());
 
     // Create Arrival Sequence
     ArrivalSequence* arrivalSequence = new ArrivalSequence();
