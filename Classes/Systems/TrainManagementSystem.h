@@ -24,6 +24,7 @@ public:
     TrainManagementSystem(cocos2d::Scene *scene);
     void spawnTrain(rapidjson::Value &timetableRecord);
     bool isPlatformFull(const char* platform);
+    bool triggerPlatformWarning(const char* platform);
 private:
     Document level;
     cocos2d::Scene *scene;

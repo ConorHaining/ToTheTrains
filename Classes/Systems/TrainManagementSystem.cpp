@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iostream>
 #include <Entities/Train.h>
+#include <Entities/WarningSymbol.h>
 #include "cocos2d.h"
 #include "TrainManagementSystem.h"
 
@@ -137,7 +138,6 @@ void TrainManagementSystem::addActiveTrain(const char *platform, Train* train) {
     activeTrain.train = train;
 
     this->activeTrains.push_back(activeTrain);
-
 }
 
 bool TrainManagementSystem::isPlatformFull(const char *platform) {
@@ -153,5 +153,29 @@ bool TrainManagementSystem::isPlatformFull(const char *platform) {
     }
 
     return false;
+
+}
+
+bool TrainManagementSystem::triggerPlatformWarning(const char *platform) {
+
+    EntityManager* entityManager = EntityManager::getInstance();
+    WarningSymbol* warning = (WarningSymbol*)entityManager->getEntity("warning");
+
+    SpriteComponent* sprite = (SpriteComponent*)warning->getComponent(1);
+
+    auto dirs = Director::getInstance();
+    Size visibleSize = dirs->getVisibleSize();
+    Vec2 origin = dirs->getVisibleOrigin();
+
+    sprite->getSprite()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+
+    auto scaleUp = cocos2d::ScaleTo::create(0.5f, 1.2f);
+    auto scaleDown = cocos2d::ScaleTo::create(0.5f, 1.0f);
+
+    auto seq = cocos2d::Sequence::create(scaleUp, scaleDown, nullptr);
+    auto pulse = cocos2d::RepeatForever::create(seq);
+
+    sprite->getSprite()->runAction(pulse);
+    this->scene->addChild(sprite->getSprite());
 
 }

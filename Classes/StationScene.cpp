@@ -6,6 +6,7 @@
 #include <Components/LabelComponent.h>
 #include <Systems/GameTimeSystem.h>
 #include <Systems/TrainManagementSystem.h>
+#include <Entities/WarningSymbol.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -100,7 +101,16 @@ void StationScene::update(float delta) {
             // Update Timetable
             trainManagementSystem->setActiveTrain();
         } else {
-            cocos2d::log("Platform full!");
+            EntityManager* entityManager = EntityManager::getInstance();
+
+            WarningSymbol* warningSymbol = new WarningSymbol();
+            entityManager->createEntity("warning", warningSymbol);
+
+            SpriteComponent* sprite = new SpriteComponent();
+            sprite->createSprite("Warning.png");
+            entityManager->addEntityToComponent(warningSymbol, sprite);
+
+            trainManagementSystem->triggerPlatformWarning(nextTrain["platform"].GetString());
         }
 
 
