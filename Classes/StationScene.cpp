@@ -104,7 +104,13 @@ void StationScene::update(float delta) {
             EntityManager* entityManager = EntityManager::getInstance();
             cocos2d::log("To make warning symbol");
             WarningSymbol* warningSymbol = new WarningSymbol();
-            entityManager->createEntity("warning", warningSymbol);
+
+            string warningTag = "Warning";
+            string platform(nextTrain["platform"].GetString());
+            cocos2d::log("%s %s", warningTag.c_str(), platform.c_str());
+
+            entityManager->createEntity(warningTag + platform, warningSymbol);
+
             cocos2d::log("Warning Entity created");
             SpriteComponent* sprite = new SpriteComponent();
             sprite->createSprite("Warning.png");

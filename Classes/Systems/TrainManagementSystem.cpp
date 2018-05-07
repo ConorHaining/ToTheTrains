@@ -119,10 +119,24 @@ void TrainManagementSystem::spawnTrain(rapidjson::Value &timetableRecord) {
     cocos2d::Sprite* trainSprite = spawningTrain->getSprite();
     trainSprite->setPosition(spawnLocation->getX(), spawnLocation->getY());
 
+
+    auto trainArrived = CallFuncN::create( [] (Node* sender) {
+        cocos2d::log("Arrived");
+        sender->setColor(Color3B::BLUE);
+
+        
+
+    });
+
+
     this->scene->addChild(trainSprite);
-    trainSprite->runAction(arrivalSequence->getMovement());
+
+    auto seq = Sequence::create(arrivalSequence->getMovement(), trainArrived, nullptr);
+
+    trainSprite->runAction(seq);
     cocos2d::log("Train spawned & moving");
     this->addActiveTrain(platform, train);
+
 }
 
 TrainManagementSystem::TrainManagementSystem(cocos2d::Scene *scene) {
@@ -160,7 +174,12 @@ bool TrainManagementSystem::isPlatformFull(const char *platform) {
 bool TrainManagementSystem::triggerPlatformWarning(const char *platform) {
 
     EntityManager* entityManager = EntityManager::getInstance();
-    WarningSymbol* warning = (WarningSymbol*)entityManager->getEntity("warning");
+
+    string warningTag = "Warning";
+    string platformStr(platform);
+    cocos2d::log("Placing %s%s", warningTag.c_str(), platformStr.c_str());
+
+    WarningSymbol* warning = (WarningSymbol*)entityManager->getEntity(warningTag + platformStr);
 
     SpriteComponent* sprite = (SpriteComponent*)warning->getComponent(1);
 

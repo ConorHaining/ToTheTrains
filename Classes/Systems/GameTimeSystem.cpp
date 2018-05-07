@@ -84,7 +84,7 @@ void GameTimeSystem::drawTimeFirst() {
 
     label->getLabel()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
-    this->scene->addChild(label->getLabel());
+    this->scene->addChild(label->getLabel(), 999);
 }
 
 std::string GameTimeSystem::zerofill(int i) {

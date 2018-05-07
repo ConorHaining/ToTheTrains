@@ -31,7 +31,7 @@ private:
     std::vector<ActiveTrain> activeTrains {};
     void addActiveTrain(const char* platform, Train* train);
     void removeActiveTrain(Train* train);
-
+    void trainArrived(Node* sender);
 };
 
 

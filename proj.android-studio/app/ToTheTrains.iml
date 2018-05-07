@@ -30,8 +30,8 @@
     <output url="file://$MODULE_DIR$/build/intermediates/classes/debug" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/debug" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../../AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures" isTestSource="false" />
+    <content url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures">
+      <sourceFolder url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../Classes">
       <sourceFolder url="file://$MODULE_DIR$/../../Classes" isTestSource="false" />
@@ -406,6 +406,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split-apk" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/splits-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />

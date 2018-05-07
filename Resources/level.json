@@ -9,15 +9,21 @@
 		{
 			"arrivalTime": "12:10",
 			"departureTime": "12:20",
-			"platform": "1",
+			"platform": "2",
 			"complete": false
 		},
 		{
-			"arrivalTime": "14:03",
+			"arrivalTime": "12:11",
 			"departureTime": "12:20",
 			"platform": "1",
 			"complete": false
-		}
+		},
+        {
+          "arrivalTime": "12:18",
+          "departureTime": "12:20",
+          "platform": "2",
+          "complete": false
+        }
 	],
 	"platforms": {
       "1" : {
@@ -32,6 +38,10 @@
         "despawnLocation": {
           "x": 135,
           "y": 750
+        },
+        "warningLocation": {
+          "x": 135,
+          "y": 250
         }
       },
       "2" : {
@@ -46,6 +56,10 @@
         "despawnLocation": {
           "x": 182,
           "y": -200
+        },
+        "warningLocation": {
+          "x": 182,
+          "y": 230
         }
       }
     }
