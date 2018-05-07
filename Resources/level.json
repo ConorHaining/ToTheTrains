@@ -7,7 +7,7 @@
 		  "complete": false
 		},
 		{
-			"arrivalTime": "13:03",
+			"arrivalTime": "12:10",
 			"departureTime": "12:20",
 			"platform": "1",
 			"complete": false
@@ -41,7 +41,7 @@
         },
         "stoppingLocation": {
           "x": 182,
-          "y": 250
+          "y": 230
         },
         "despawnLocation": {
           "x": 182,
