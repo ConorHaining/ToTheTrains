@@ -12,6 +12,7 @@
 #include "EntityManager.h"
 
 USING_NS_CC;
+using namespace std;
 
 Scene* StationScene::createScene()
 {
@@ -77,7 +78,8 @@ bool StationScene::init()
     log("Created Game Clock");
 
     trainManagementSystem = new TrainManagementSystem(this);
-    trainManagementSystem->loadInLevel("hello");
+    string level = "level.json";
+    trainManagementSystem->loadInLevel(level);
 
     this->scheduleUpdate();
 
@@ -87,41 +89,22 @@ bool StationScene::init()
 void StationScene::update(float delta) {
     gameTimeSystem->incrementTime(delta);
     gameTimeSystem->drawTime();
+    GameClock* currentTime = gameTimeSystem->getTime();
 
-    // Check Time
-    rapidjson::Value& nextTrain = trainManagementSystem->checkNextTrain();
-    bool isTrainDue = gameTimeSystem->equalTime(nextTrain["arrivalTime"].GetString());
+    vector<TrainRecord> dueTrains = trainManagementSystem->fetchDueTrains(currentTime);
 
-    if (isTrainDue) {
-        cocos2d::log("%s is due", nextTrain["arrivalTime"].GetString());
+    for (vector<TrainRecord>::iterator record = dueTrains.begin(); record != dueTrains.end(); ++record) {
 
-        // Spawn and move train
-        if (!trainManagementSystem->isPlatformFull(nextTrain["platform"].GetString())) {
-            trainManagementSystem->spawnTrain(nextTrain);
-            // Update Timetable
-            trainManagementSystem->setActiveTrain(nextTrain);
+        if (trainManagementSystem->isPlatformClear((*record).platform)) {
+
+            trainManagementSystem->spawnTrain(*record);
+
         } else {
-            EntityManager* entityManager = EntityManager::getInstance();
-            cocos2d::log("To make warning symbol");
-            WarningSymbol* warningSymbol = new WarningSymbol();
 
-            string warningTag = "Warning";
-            string platform(nextTrain["platform"].GetString());
-            cocos2d::log("%s %s", warningTag.c_str(), platform.c_str());
+            trainManagementSystem->triggerWarningSign(*record);
 
-            entityManager->createEntity(warningTag + platform, warningSymbol);
-
-            cocos2d::log("Warning Entity created");
-            SpriteComponent* sprite = new SpriteComponent();
-            sprite->createSprite("Warning.png");
-            entityManager->addEntityToComponent(warningSymbol, sprite);
-
-            trainManagementSystem->triggerPlatformWarning(nextTrain["platform"].GetString());
         }
 
-
-    } else {
-//        cocos2d::log("No train due");
     }
 
 }

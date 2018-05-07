@@ -5,33 +5,71 @@
 #ifndef PROJ_ANDROID_STUDIO_TIMETABLESYSTEM_H
 #define PROJ_ANDROID_STUDIO_TIMETABLESYSTEM_H
 
-#include "Entities/Train.h"
-#include "include/rapidjson/document.h"
+//class TrainManagementSystem {
+//public:
+//    void loadInLevel(string fileName);
+//    rapidjson::Value & checkNextTrain();
+//    void setActiveTrain(rapidjson::Value& trainRecord);
+//    TrainManagementSystem(cocos2d::Scene *scene);
+//    void spawnTrain(rapidjson::Value &timetableRecord);
+//    bool isPlatformFull(const char* platform);
+//    bool triggerPlatformWarning(const char* platform);
+//private:
+//    Document level;
+//    cocos2d::Scene *scene;
+//    std::vector<ActiveTrain> activeTrains {};
+//    void addActiveTrain(const char* platform, Train* train);
+//    void removeActiveTrain(Train* train);
+//    void trainArrived(Node* sender);
+//};
+
+#include <Entities/GameClock.h>
+#include <string>
 
 using namespace std;
-using namespace rapidjson;
 
-struct ActiveTrain {
-    const char * platform;
-    Train* train;
+struct Location {
+    int x;
+    int y;
+};
+
+struct Platform{
+    string number;
+    Location* spawnLocation;
+    Location* stoppingLocation;
+    Location* despawnLocation;
+    Location* warningLocation;
+};
+
+struct TrainRecord {
+    GameClock* arrivalTime;
+    GameClock* departureTime;
+    Platform* platform;
+    bool complete;
 };
 
 class TrainManagementSystem {
 public:
+
+    TrainManagementSystem(Scene* scene);
+
     void loadInLevel(string fileName);
-    rapidjson::Value & checkNextTrain();
-    void setActiveTrain(rapidjson::Value& trainRecord);
-    TrainManagementSystem(cocos2d::Scene *scene);
-    void spawnTrain(rapidjson::Value &timetableRecord);
-    bool isPlatformFull(const char* platform);
-    bool triggerPlatformWarning(const char* platform);
+
+    vector<TrainRecord> fetchDueTrains(GameClock* currentTime);
+
+    bool isPlatformClear(Platform* platform);
+    bool isPlatformFull(Platform* platform);
+
+    void spawnTrain(TrainRecord trainRecord);
+    void triggerWarningSign(TrainRecord trainRecord);
+
 private:
-    Document level;
-    cocos2d::Scene *scene;
-    std::vector<ActiveTrain> activeTrains {};
-    void addActiveTrain(const char* platform, Train* train);
-    void removeActiveTrain(Train* train);
-    void trainArrived(Node* sender);
+    Scene* scene;
+
+    vector<TrainRecord> timetable {};
+    vector<TrainRecord> activeTrains {};
+    vector<TrainRecord> queuedTrains {};
+
 };
 
 
