@@ -26,6 +26,7 @@
 #include <Entities/GameClock.h>
 #include <string>
 #include "cocos2d.h"
+#include "include/rapidjson/document.h"
 
 using namespace std;
 USING_NS_CC;
@@ -71,6 +72,8 @@ private:
     vector<TrainRecord> timetable {};
     vector<TrainRecord> activeTrains {};
     vector<TrainRecord> queuedTrains {};
+
+    Document levelJSON;
 
 };
 
