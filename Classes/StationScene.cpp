@@ -93,19 +93,19 @@ void StationScene::update(float delta) {
     bool isTrainDue = gameTimeSystem->equalTime(nextTrain["arrivalTime"].GetString());
 
     if (isTrainDue) {
-//        cocos2d::log("Train due");
+        cocos2d::log("%s is due", nextTrain["arrivalTime"].GetString());
 
         // Spawn and move train
         if (!trainManagementSystem->isPlatformFull(nextTrain["platform"].GetString())) {
             trainManagementSystem->spawnTrain(nextTrain);
             // Update Timetable
-            trainManagementSystem->setActiveTrain();
+            trainManagementSystem->setActiveTrain(nextTrain);
         } else {
             EntityManager* entityManager = EntityManager::getInstance();
-
+            cocos2d::log("To make warning symbol");
             WarningSymbol* warningSymbol = new WarningSymbol();
             entityManager->createEntity("warning", warningSymbol);
-
+            cocos2d::log("Warning Entity created");
             SpriteComponent* sprite = new SpriteComponent();
             sprite->createSprite("Warning.png");
             entityManager->addEntityToComponent(warningSymbol, sprite);
