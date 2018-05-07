@@ -167,7 +167,10 @@ bool TrainManagementSystem::triggerPlatformWarning(const char *platform) {
     Size visibleSize = dirs->getVisibleSize();
     Vec2 origin = dirs->getVisibleOrigin();
 
-    sprite->getSprite()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    int x = this->level["platforms"][platform]["warningLocation"]["x"].GetInt();
+    int y = this->level["platforms"][platform]["warningLocation"]["y"].GetInt();
+
+    sprite->getSprite()->setPosition(Vec2(x, y));
 
     auto scaleUp = cocos2d::ScaleTo::create(0.5f, 1.2f);
     auto scaleDown = cocos2d::ScaleTo::create(0.5f, 1.0f);
@@ -179,3 +182,4 @@ bool TrainManagementSystem::triggerPlatformWarning(const char *platform) {
     this->scene->addChild(sprite->getSprite());
 
 }
+
