@@ -6,6 +6,7 @@
 #define PROJ_ANDROID_STUDIO_GAMETIMESYSTEM_H
 
 #include <Entities/GameClock.h>
+#include <Components/Time.h>
 #include "cocos2d.h"
 
 USING_NS_CC;
@@ -18,7 +19,8 @@ private:
 public:
     GameTimeSystem(Scene* scene);
     void setTime(int hour, int minute);
-    GameClock* getTime();
+    GameClock* getClock();
+    Time* getTime();
     void incrementTime(float delta);
     void drawTime();
     void drawTimeFirst();

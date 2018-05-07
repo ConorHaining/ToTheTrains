@@ -14,6 +14,8 @@ public:
     int minute;
     int second;
     float delta;
+
+    bool operator==(Time* otherTime) const;
 };
 
 

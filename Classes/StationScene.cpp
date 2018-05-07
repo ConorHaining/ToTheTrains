@@ -80,6 +80,7 @@ bool StationScene::init()
     trainManagementSystem = new TrainManagementSystem(this);
     string level = "level.json";
     trainManagementSystem->loadInLevel(level);
+    cocos2d::log("Level Loaded");
 
     this->scheduleUpdate();
 
@@ -89,13 +90,14 @@ bool StationScene::init()
 void StationScene::update(float delta) {
     gameTimeSystem->incrementTime(delta);
     gameTimeSystem->drawTime();
-    GameClock* currentTime = gameTimeSystem->getTime();
+    Time* currentTime = gameTimeSystem->getTime();
 
     vector<TrainRecord> dueTrains = trainManagementSystem->fetchDueTrains(currentTime);
 
     for (vector<TrainRecord>::iterator record = dueTrains.begin(); record != dueTrains.end(); ++record) {
 
-        if (trainManagementSystem->isPlatformClear((*record).platform)) {
+        cocos2d::log("Train(s) are due");
+        if (trainManagementSystem->isPlatformClear(record->platform)) {
 
             trainManagementSystem->spawnTrain(*record);
 

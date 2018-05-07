@@ -25,11 +25,13 @@
 
 #include <Entities/GameClock.h>
 #include <string>
+#include <Components/Time.h>
 #include "cocos2d.h"
 #include "include/rapidjson/document.h"
 
 using namespace std;
 USING_NS_CC;
+using namespace rapidjson;
 
 struct Location {
     int x;
@@ -38,16 +40,16 @@ struct Location {
 
 struct Platform{
     string number;
-    Location* spawnLocation;
-    Location* stoppingLocation;
-    Location* despawnLocation;
-    Location* warningLocation;
+    Location spawnLocation;
+    Location stoppingLocation;
+    Location despawnLocation;
+    Location warningLocation;
 };
 
 struct TrainRecord {
-    GameClock* arrivalTime;
-    GameClock* departureTime;
-    Platform* platform;
+    Time arrivalTime;
+    Time departureTime;
+    Platform platform;
     bool complete;
 };
 
@@ -58,10 +60,10 @@ public:
 
     void loadInLevel(string fileName);
 
-    vector<TrainRecord> fetchDueTrains(GameClock* currentTime);
+    vector<TrainRecord> fetchDueTrains(Time* currentTime);
 
-    bool isPlatformClear(Platform* platform);
-    bool isPlatformFull(Platform* platform);
+    bool isPlatformClear(Platform platform);
+    bool isPlatformFull(Platform platform);
 
     void spawnTrain(TrainRecord trainRecord);
     void triggerWarningSign(TrainRecord trainRecord);
@@ -73,8 +75,14 @@ private:
     vector<TrainRecord> activeTrains {};
     vector<TrainRecord> queuedTrains {};
 
+    vector<Platform> platforms {};
+
     Document levelJSON;
 
+    void buildTrainRecords();
+    Time buildTime(rapidjson::Value& currentRecord, const char* type);
+    Platform buildPlatform(rapidjson::Value& currentRecord);
+    Location buildLocation(rapidjson::Value& currentRecord, const char* type);
 };
 
 

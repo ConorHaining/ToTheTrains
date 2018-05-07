@@ -99,7 +99,7 @@ std::string GameTimeSystem::zerofill(int i) {
     return ss.str();
 }
 
-GameClock *GameTimeSystem::getTime() {
+GameClock *GameTimeSystem::getClock() {
     EntityManager* entityManager = EntityManager::getInstance();
     GameClock* gameClock = (GameClock*)entityManager->getEntity("clock");
 
@@ -107,7 +107,7 @@ GameClock *GameTimeSystem::getTime() {
 }
 
 bool GameTimeSystem::equalTime(const char* time) {
-    GameClock* gameClock = this->getTime();
+    GameClock* gameClock = this->getClock();
     Time *gameTime = (Time *) gameClock->getComponent(1);
 
     // Time is in format HH:MM
@@ -121,4 +121,11 @@ bool GameTimeSystem::equalTime(const char* time) {
 
     return (gameTime->hour == hourInt) && (gameTime->minute == minuteInt);
 
+}
+
+Time *GameTimeSystem::getTime() {
+    GameClock* gameClock = this->getClock();
+    Time *gameTime = (Time *) gameClock->getComponent(1);
+
+    return gameTime;
 }
