@@ -20,7 +20,7 @@ class TrainManagementSystem {
 public:
     void loadInLevel(string fileName);
     rapidjson::Value & checkNextTrain();
-    void setActiveTrain();
+    void setActiveTrain(rapidjson::Value& trainRecord);
     TrainManagementSystem(cocos2d::Scene *scene);
     void spawnTrain(rapidjson::Value &timetableRecord);
     bool isPlatformFull(const char* platform);

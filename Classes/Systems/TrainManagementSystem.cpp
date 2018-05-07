@@ -54,7 +54,7 @@ rapidjson::Value& TrainManagementSystem::checkNextTrain() {
 
 }
 
-void TrainManagementSystem::setActiveTrain() {
+void TrainManagementSystem::setActiveTrain(rapidjson::Value& trainRecord) {
 
 
 //    cocos2d::log("Pre loop");
@@ -63,12 +63,9 @@ void TrainManagementSystem::setActiveTrain() {
         rapidjson::Value& nextRecord = this->level["timetable"][i];
 //        cocos2d::log("Got Record");
 
-        if(!nextRecord["complete"].GetBool()) {
-//            cocos2d::log("if not bool");
-//            cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
+        if(nextRecord == trainRecord) {
+
             nextRecord["complete"].SetBool(true);
-//            cocos2d::log("%d, Arrival Time is: %s", nextRecord["complete"].GetBool(), nextRecord["arrivalTime"].GetString());
-//            cocos2d::log("Changed value");
             return;
         }
 
@@ -124,6 +121,7 @@ void TrainManagementSystem::spawnTrain(rapidjson::Value &timetableRecord) {
 
     this->scene->addChild(trainSprite);
     trainSprite->runAction(arrivalSequence->getMovement());
+    cocos2d::log("Train spawned & moving");
     this->addActiveTrain(platform, train);
 }
 
@@ -138,6 +136,7 @@ void TrainManagementSystem::addActiveTrain(const char *platform, Train* train) {
     activeTrain.train = train;
 
     this->activeTrains.push_back(activeTrain);
+    cocos2d::log("Active Train pushed");
 }
 
 bool TrainManagementSystem::isPlatformFull(const char *platform) {
@@ -147,11 +146,13 @@ bool TrainManagementSystem::isPlatformFull(const char *platform) {
         cocos2d::log("ActiveTrain Platform: %s, passed in platform: %s | equal %d", (*it).platform, platform, strcmp((*it).platform, platform));
 
         if(strcmp((*it).platform, platform) == 0) {
+            cocos2d::log("Platform %s is full", platform);
             return true;
         }
 
     }
 
+    cocos2d::log("Platform %s is clear", platform);
     return false;
 
 }
@@ -163,11 +164,10 @@ bool TrainManagementSystem::triggerPlatformWarning(const char *platform) {
 
     SpriteComponent* sprite = (SpriteComponent*)warning->getComponent(1);
 
-    auto dirs = Director::getInstance();
-    Size visibleSize = dirs->getVisibleSize();
-    Vec2 origin = dirs->getVisibleOrigin();
+    int x = this->level["platforms"][platform]["warningLocation"]["x"].GetInt();
+    int y = this->level["platforms"][platform]["warningLocation"]["y"].GetInt();
 
-    sprite->getSprite()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    sprite->getSprite()->setPosition(Vec2(x, y));
 
     auto scaleUp = cocos2d::ScaleTo::create(0.5f, 1.2f);
     auto scaleDown = cocos2d::ScaleTo::create(0.5f, 1.0f);
