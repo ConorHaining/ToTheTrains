@@ -96,7 +96,7 @@ void StationScene::update(float delta) {
 
     for (vector<TrainRecord>::iterator record = dueTrains.begin(); record != dueTrains.end(); ++record) {
 
-        cocos2d::log("Train(s) are due");
+//        cocos2d::log("Train(s) are due");
         if (trainManagementSystem->isPlatformClear(record->platform)) {
 
             trainManagementSystem->spawnTrain(*record);
@@ -115,10 +115,25 @@ void StationScene::update(float delta) {
 
     for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
 
-        cocos2d::log("Train(s) are in platform");
+//        cocos2d::log("Train(s) are in platform");
 
-        record->train->setColor(Color3B::GREEN);
+        record->train->setColor(Color3B::BLUE);
 
+        auto touchListener = EventListenerTouchOneByOne::create();
+
+        touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::openDoors, this);
+        _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     }
+
+}
+
+bool StationScene::openDoors(Touch *touch, Event *event, ) {
+
+    Node* t = event->getCurrentTarget();
+    cocos2d::log("Touched");
+
+    //Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener,sprite);
+
+    return true;
 
 }

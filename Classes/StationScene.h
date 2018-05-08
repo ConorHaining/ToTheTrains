@@ -15,6 +15,10 @@ public:
 
     virtual bool init();
     void update(float delta) override;
+
+    bool openDoors(Touch* touch, Event* event);
+    bool closeDoors(Touch* touch, Event* event);
+    bool departTrain(Touch* touch, Event* event);
     
     // implement the "static create()" method manually
     CREATE_FUNC(StationScene);
