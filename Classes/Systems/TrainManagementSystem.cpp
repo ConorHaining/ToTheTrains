@@ -139,28 +139,30 @@ void TrainManagementSystem::triggerWarningSign(TrainRecord trainRecord) {
 
     EntityManager* entityManager = EntityManager::getInstance();
 
-//    if (entityManager->getEntity("warning" + trainRecord.platform.number) == nullptr)
+    if (entityManager->getEntity("warning" + trainRecord.platform.number) == nullptr) {
 
-    WarningSymbol* warningSymbol = new WarningSymbol();
-    entityManager->createEntity("warning" + trainRecord.platform.number, warningSymbol);
+        WarningSymbol* warningSymbol = new WarningSymbol();
+        entityManager->createEntity("warning" + trainRecord.platform.number, warningSymbol);
 
-    SpriteComponent* sprite = new SpriteComponent();
-    sprite->createSprite("Warning.png");
-    entityManager->addEntityToComponent(warningSymbol, sprite);
+        SpriteComponent* sprite = new SpriteComponent();
+        sprite->createSprite("Warning.png");
+        entityManager->addEntityToComponent(warningSymbol, sprite);
 
-    int x = trainRecord.platform.warningLocation.x;
-    int y = trainRecord.platform.warningLocation.y;
+        int x = trainRecord.platform.warningLocation.x;
+        int y = trainRecord.platform.warningLocation.y;
 
-    sprite->getSprite()->setPosition(Vec2(x, y));
+        sprite->getSprite()->setPosition(Vec2(x, y));
 
-    auto scaleUp = cocos2d::ScaleTo::create(0.5f, 1.2f);
-    auto scaleDown = cocos2d::ScaleTo::create(0.5f, 1.0f);
+        auto scaleUp = cocos2d::ScaleTo::create(0.5f, 1.2f);
+        auto scaleDown = cocos2d::ScaleTo::create(0.5f, 1.0f);
 
-    auto seq = cocos2d::Sequence::create(scaleUp, scaleDown, nullptr);
-    auto pulse = cocos2d::RepeatForever::create(seq);
+        auto seq = cocos2d::Sequence::create(scaleUp, scaleDown, nullptr);
+        auto pulse = cocos2d::RepeatForever::create(seq);
 
-    sprite->getSprite()->runAction(pulse);
-    this->scene->addChild(sprite->getSprite());
+        sprite->getSprite()->runAction(pulse);
+        this->scene->addChild(sprite->getSprite());
+
+    }
 
 }
 
