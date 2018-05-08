@@ -111,7 +111,8 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
 
     this->scene->addChild(trainSprite);
 
-    trainSprite->runAction(arrivalSequence->getMovement());
+    auto seq = Sequence::create(arrivalSequence->getMovement(), nullptr);
+    trainSprite->runAction(seq);
 
     for (vector<TrainRecord>::iterator record = this->timetable.begin(); record != this->timetable.end(); ++record) {
         bool equalMinute = record->arrivalTime.minute == trainRecord.arrivalTime.minute;
@@ -126,8 +127,6 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
         }
 
     }
-
-
 
     cocos2d::log("Train spawned & moving");
 
@@ -247,22 +246,24 @@ Location TrainManagementSystem::buildLocation(rapidjson::Value &currentRecord, c
     
 }
 
-vector<TrainRecord> TrainManagementSystem::fetchArrivedTrains(Time* currentTime) {
+vector<TrainRecord> TrainManagementSystem::fetchArrivedTrains() {
 
-    vector<TrainRecord> records {};
+//    vector<TrainRecord> records {};
+//
+//    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
+//
+////        Time* platformTime = record->arrivalTime + 3;
+//
+//        if ((record->arrivalTime.minute + 4) == currentTime->minute) {
+//
+//            records.push_back(*record);
+//
+//        }
+//
+//    }
+//
+//    return records;
 
-    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
-
-//        Time* platformTime = record->arrivalTime + 3;
-
-        if ((record->arrivalTime.minute + 4) == currentTime->minute) {
-
-            records.push_back(*record);
-
-        }
-
-    }
-
-    return records;
+    return activeTrains;
 
 }

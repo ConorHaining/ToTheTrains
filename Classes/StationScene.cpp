@@ -82,6 +82,13 @@ bool StationScene::init()
     trainManagementSystem->loadInLevel(level);
     cocos2d::log("Level Loaded");
 
+    cocos2d::log("Registering Touch Events");
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->setSwallowTouches(true);
+
+    touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::openDoors, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+
     this->scheduleUpdate();
 
     return true;
@@ -109,30 +116,36 @@ void StationScene::update(float delta) {
 
     }
 
-    vector<TrainRecord> arrivedTrains = trainManagementSystem->fetchArrivedTrains(currentTime);
+
+
+}
+
+bool StationScene::openDoors(Touch *touch, Event *event) {
+
+    vector<TrainRecord> arrivedTrains = trainManagementSystem->fetchArrivedTrains();
     EntityManager* entityManager = EntityManager::getInstance();
 
-
+    auto touchPoint = touch->getLocation();
     for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
 
 //        cocos2d::log("Train(s) are in platform");
 
-        record->train->setColor(Color3B::BLUE);
+        if ( record->train->getBoundingBox().containsPoint(touchPoint)) {
 
-        auto touchListener = EventListenerTouchOneByOne::create();
+            if (record->train->getNumberOfRunningActions() == 0) {
 
-        touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::openDoors, this);
-        _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+                record->train->setColor(Color3B::BLUE);
+
+            } else {
+
+                record->train->setColor(Color3B::RED);
+
+            }
+
+        }
+
+
     }
-
-}
-
-bool StationScene::openDoors(Touch *touch, Event *event, ) {
-
-    Node* t = event->getCurrentTarget();
-    cocos2d::log("Touched");
-
-    //Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener,sprite);
 
     return true;
 

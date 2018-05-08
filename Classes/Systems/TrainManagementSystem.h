@@ -63,7 +63,7 @@ public:
     void loadInLevel(string fileName);
 
     vector<TrainRecord> fetchDueTrains(Time* currentTime);
-    vector<TrainRecord> fetchArrivedTrains(Time* currentTime);
+    vector<TrainRecord> fetchArrivedTrains();
 
     bool isPlatformClear(Platform platform);
     bool isPlatformFull(Platform platform);
