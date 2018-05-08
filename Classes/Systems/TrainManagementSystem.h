@@ -24,6 +24,7 @@
 //};
 
 #include <Entities/GameClock.h>
+#include <Entities/Train.h>
 #include <string>
 #include <Components/Time.h>
 #include "cocos2d.h"
@@ -51,6 +52,7 @@ struct TrainRecord {
     Time departureTime;
     Platform platform;
     bool complete;
+    Sprite* train;
 };
 
 class TrainManagementSystem {
@@ -61,6 +63,7 @@ public:
     void loadInLevel(string fileName);
 
     vector<TrainRecord> fetchDueTrains(Time* currentTime);
+    vector<TrainRecord> fetchArrivedTrains(Time* currentTime);
 
     bool isPlatformClear(Platform platform);
     bool isPlatformFull(Platform platform);

@@ -94,7 +94,11 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
     // Create New Train Entity
     EntityManager* entityManager = EntityManager::getInstance();
     Train* train = new Train();
-    entityManager->createEntity("train", static_cast<EntityInterface *>(train));
+    string tag;
+
+    tag = "train" + trainRecord.platform.number;
+
+    entityManager->createEntity(tag, (EntityInterface*)train);
     entityManager->addEntityToComponent(train, spawnLocation);
     entityManager->addEntityToComponent(train, stoppingLocation);
     entityManager->addEntityToComponent(train, despawnLocation);
@@ -105,18 +109,9 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
     cocos2d::Sprite* trainSprite = spawningTrain->getSprite();
     trainSprite->setPosition(spawnLocation->getX(), spawnLocation->getY());
 
-
-    auto trainArrived = CallFuncN::create( [] (Node* sender) {
-        cocos2d::log("Arrived");
-        sender->setColor(Color3B::BLUE);
-    });
-
-
     this->scene->addChild(trainSprite);
 
-    auto seq = Sequence::create(arrivalSequence->getMovement(), trainArrived, nullptr);
-
-    trainSprite->runAction(seq);
+    trainSprite->runAction(arrivalSequence->getMovement());
 
     for (vector<TrainRecord>::iterator record = this->timetable.begin(); record != this->timetable.end(); ++record) {
         bool equalMinute = record->arrivalTime.minute == trainRecord.arrivalTime.minute;
@@ -125,11 +120,14 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
 
         if (equalHour && equalMinute && equalPlatform) {
             record->complete = true;
+            record->train = trainSprite;
+            activeTrains.push_back(*record);
+            continue;
         }
 
     }
 
-    activeTrains.push_back(trainRecord);
+
 
     cocos2d::log("Train spawned & moving");
 
@@ -247,4 +245,24 @@ Location TrainManagementSystem::buildLocation(rapidjson::Value &currentRecord, c
     
     return location;
     
+}
+
+vector<TrainRecord> TrainManagementSystem::fetchArrivedTrains(Time* currentTime) {
+
+    vector<TrainRecord> records {};
+
+    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
+
+//        Time* platformTime = record->arrivalTime + 3;
+
+        if ((record->arrivalTime.minute + 4) == currentTime->minute) {
+
+            records.push_back(*record);
+
+        }
+
+    }
+
+    return records;
+
 }

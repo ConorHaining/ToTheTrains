@@ -13,3 +13,23 @@ bool Time::operator==(Time* otherTime) const{
     }
 
 }
+
+Time* Time::operator+(int i) {
+
+    Time* newTime = new Time();
+    newTime->delta = this->delta;
+    newTime->second = this->second;
+    newTime->minute = this->minute + i;
+    newTime->hour = this->hour;
+
+    if (newTime->minute >= 60) {
+        newTime->minute = 0;
+        newTime->hour++;
+    }
+
+    if (newTime->hour >= 24) {
+        newTime->hour = 0;
+    }
+
+    return newTime;
+}

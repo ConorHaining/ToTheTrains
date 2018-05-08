@@ -109,4 +109,16 @@ void StationScene::update(float delta) {
 
     }
 
+    vector<TrainRecord> arrivedTrains = trainManagementSystem->fetchArrivedTrains(currentTime);
+    EntityManager* entityManager = EntityManager::getInstance();
+
+
+    for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
+
+        cocos2d::log("Train(s) are in platform");
+
+        record->train->setColor(Color3B::GREEN);
+
+    }
+
 }

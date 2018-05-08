@@ -16,6 +16,7 @@ public:
     float delta;
 
     bool operator==(Time* otherTime) const;
+    Time* operator+(int i) ;
 };
 
 
