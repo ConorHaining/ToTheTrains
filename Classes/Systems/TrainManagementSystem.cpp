@@ -98,7 +98,7 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
 
     tag = "train" + trainRecord.platform.number;
 
-    entityManager->createEntity(tag, (EntityInterface*)train);
+    entityManager->createEntity(tag, train);
     entityManager->addEntityToComponent(train, spawnLocation);
     entityManager->addEntityToComponent(train, stoppingLocation);
     entityManager->addEntityToComponent(train, despawnLocation);

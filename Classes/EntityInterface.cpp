@@ -8,6 +8,8 @@ EntityInterface::EntityInterface() {
     // Generate new ID number
 
     this->markedForDeletion = false;
+
+    this->attachedComponents.reserve(12);
 }
 
 EntityInterface::~EntityInterface() {
@@ -27,6 +29,7 @@ bool EntityInterface::isMarkedForDeletion() {
 }
 
 void EntityInterface::attachComponent(ComponentInterface* component) {
+//    attachedComponents.push_back(component);
     attachedComponents.push_back(component);
 }
 

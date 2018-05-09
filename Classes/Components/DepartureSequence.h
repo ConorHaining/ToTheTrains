@@ -16,7 +16,7 @@ private:
 public:
     void setMovement(DespawnLocation* despawnLocation);
 
-    cocos2d::MoveTo *getMovement() const;
+    cocos2d::MoveTo* getMovement();
 
 };
 

@@ -8,6 +8,9 @@
 #include <Systems/TrainManagementSystem.h>
 #include <Entities/WarningSymbol.h>
 #include <Components/DepartureSequence.h>
+#include <Components/SpawnLocation.h>
+#include <Components/StoppingLocation.h>
+#include <Components/ArrivalSequence.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -108,7 +111,7 @@ void StationScene::update(float delta) {
         if (trainManagementSystem->isPlatformClear(record->platform)) {
 
             trainManagementSystem->spawnTrain(*record);
-
+            cocos2d::log("...");
         } else {
 
             trainManagementSystem->triggerWarningSign(*record);
@@ -131,6 +134,7 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
         Train* trainEntity = record->train;
         SpriteComponent* spriteComponent = (SpriteComponent*)trainEntity->getComponent(6);
         Sprite* trainSprite = spriteComponent->getSprite();
+
         cocos2d::log("LOL");
 
         if ( trainSprite->getBoundingBox().containsPoint(touchPoint)) {
@@ -149,8 +153,10 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
 
             } else if  (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsClosed) {
 
-                DepartureSequence* departureSequence = (DepartureSequence*)trainEntity->getComponent(5);
-                MoveTo* action = departureSequence->getMovement();
+                int x = record->platform.despawnLocation.x;
+                int y = record->platform.despawnLocation.y;
+
+                MoveTo* action = MoveTo::create(3, Vec2(x, y));
 
                 // Depart Train
                 trainSprite->setColor(Color3B::MAGENTA);

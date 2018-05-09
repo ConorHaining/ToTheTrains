@@ -4,7 +4,7 @@
 
 #include "DepartureSequence.h"
 
-cocos2d::MoveTo *DepartureSequence::getMovement() const {
+cocos2d::MoveTo* DepartureSequence::getMovement(){
     return movement;
 }
 
