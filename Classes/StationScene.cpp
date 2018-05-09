@@ -7,6 +7,7 @@
 #include <Systems/GameTimeSystem.h>
 #include <Systems/TrainManagementSystem.h>
 #include <Entities/WarningSymbol.h>
+#include <Components/DepartureSequence.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
@@ -43,7 +44,7 @@ bool StationScene::init()
 
     // Create EntityManager
     log("Creating EntityManager");
-    EntityManager* entityManager = EntityManager::getInstance();
+    entityManager = EntityManager::getInstance();
     log("Created EntityManager");
 
     // Load in Entities
@@ -127,25 +128,40 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
     auto touchPoint = touch->getLocation();
     for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
 
-//        cocos2d::log("Train(s) are in platform");
+        Train* trainEntity = record->train;
+        SpriteComponent* spriteComponent = (SpriteComponent*)trainEntity->getComponent(6);
+        Sprite* trainSprite = spriteComponent->getSprite();
+        cocos2d::log("LOL");
 
-        if ( record->train->getBoundingBox().containsPoint(touchPoint)) {
+        if ( trainSprite->getBoundingBox().containsPoint(touchPoint)) {
 
-            if (record->train->getNumberOfRunningActions() == 0 && record->trainState == inbound) {
+            if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == inbound) {
 
                 // Open Doors
-                record->train->setColor(Color3B::BLUE);
+                trainSprite->setColor(Color3B::BLUE);
                 trainManagementSystem->setTrainState(*record, TrainState::doorsOpen);
 
-            } else if (record->train->getNumberOfRunningActions() == 0 && record->trainState == doorsOpen) {
+            } else if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsOpen) {
 
                 // Close Doors
-                record->train->setColor(Color3B::ORANGE);
+                trainSprite->setColor(Color3B::ORANGE);
                 trainManagementSystem->setTrainState(*record, TrainState::doorsClosed);
+
+            } else if  (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsClosed) {
+
+                DepartureSequence* departureSequence = (DepartureSequence*)trainEntity->getComponent(5);
+                MoveTo* action = departureSequence->getMovement();
+
+                // Depart Train
+                trainSprite->setColor(Color3B::MAGENTA);
+                trainManagementSystem->setTrainState(*record, TrainState::departed);
+
+                trainSprite->runAction(action);
+
 
             } else {
 
-                record->train->setColor(Color3B::RED);
+                trainSprite->setColor(Color3B::RED);
 
             }
 

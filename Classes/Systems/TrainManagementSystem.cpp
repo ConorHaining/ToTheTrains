@@ -121,7 +121,7 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
 
         if (equalHour && equalMinute && equalPlatform) {
             record->complete = true;
-            record->train = trainSprite;
+            record->train = train;
             record->trainState = inbound;
             activeTrains.push_back(*record);
             continue;

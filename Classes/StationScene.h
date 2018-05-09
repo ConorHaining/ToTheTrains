@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Systems/GameTimeSystem.h"
 #include "Systems/TrainManagementSystem.h"
+#include "EntityManager.h"
 
 class StationScene : public cocos2d::Scene
 {
@@ -22,6 +23,7 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(StationScene);
+    EntityManager *entityManager;
 };
 
 #endif // __STATION_SCENE_H__

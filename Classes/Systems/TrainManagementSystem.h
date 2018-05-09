@@ -61,7 +61,7 @@ struct TrainRecord {
     Time departureTime;
     Platform platform;
     bool complete;
-    Sprite* train;
+    Train* train;
     TrainState trainState;
 };
 

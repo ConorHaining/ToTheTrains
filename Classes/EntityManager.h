@@ -11,6 +11,8 @@
 #include "EntityInterface.h"
 #include "ComponentInterface.h"
 
+using namespace std;
+
 struct EntityStorage{
     std::string tag;
     EntityInterface* entity;
@@ -47,6 +49,7 @@ public:
 
 
     void addEntityToComponent(EntityInterface* entity, ComponentInterface* component);
+    void addEntityToComponent(EntityInterface* entity, ComponentInterface* component, string tag);
 };
 
 
