@@ -86,7 +86,7 @@ bool StationScene::init()
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
 
-    touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::openDoors, this);
+    touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::doorControl, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
     this->scheduleUpdate();
@@ -120,10 +120,9 @@ void StationScene::update(float delta) {
 
 }
 
-bool StationScene::openDoors(Touch *touch, Event *event) {
+bool StationScene::doorControl(Touch *touch, Event *event) {
 
     vector<TrainRecord> arrivedTrains = trainManagementSystem->fetchArrivedTrains();
-    EntityManager* entityManager = EntityManager::getInstance();
 
     auto touchPoint = touch->getLocation();
     for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
@@ -132,9 +131,17 @@ bool StationScene::openDoors(Touch *touch, Event *event) {
 
         if ( record->train->getBoundingBox().containsPoint(touchPoint)) {
 
-            if (record->train->getNumberOfRunningActions() == 0) {
+            if (record->train->getNumberOfRunningActions() == 0 && record->trainState == inbound) {
 
+                // Open Doors
                 record->train->setColor(Color3B::BLUE);
+                trainManagementSystem->setTrainState(*record, TrainState::doorsOpen);
+
+            } else if (record->train->getNumberOfRunningActions() == 0 && record->trainState == doorsOpen) {
+
+                // Close Doors
+                record->train->setColor(Color3B::ORANGE);
+                trainManagementSystem->setTrainState(*record, TrainState::doorsClosed);
 
             } else {
 

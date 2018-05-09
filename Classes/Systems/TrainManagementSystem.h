@@ -34,6 +34,15 @@ using namespace std;
 USING_NS_CC;
 using namespace rapidjson;
 
+enum TrainState{
+    enroute,
+    inbound,
+    doorsOpen,
+    doorsClosed,
+    outbound,
+    departed
+};
+
 struct Location {
     int x;
     int y;
@@ -53,6 +62,7 @@ struct TrainRecord {
     Platform platform;
     bool complete;
     Sprite* train;
+    TrainState trainState;
 };
 
 class TrainManagementSystem {
@@ -70,6 +80,8 @@ public:
 
     void spawnTrain(TrainRecord trainRecord);
     void triggerWarningSign(TrainRecord trainRecord);
+
+    void setTrainState(TrainRecord record, TrainState state);
 
 private:
     Scene* scene;

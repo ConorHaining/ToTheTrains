@@ -16,7 +16,7 @@ public:
     virtual bool init();
     void update(float delta) override;
 
-    bool openDoors(Touch* touch, Event* event);
+    bool doorControl(Touch *touch, Event *event);
     bool closeDoors(Touch* touch, Event* event);
     bool departTrain(Touch* touch, Event* event);
     
