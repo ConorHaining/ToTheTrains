@@ -286,3 +286,32 @@ void TrainManagementSystem::setTrainState(TrainRecord trainRecord, TrainState st
 
     }
 }
+
+void TrainManagementSystem::despawnTrain(TrainRecord trainRecord) {
+
+    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
+
+        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
+        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
+        bool equalPlatform = trainRecord.platform.number == record->platform.number;
+
+        if (equalhour && equalMinute && equalPlatform) {
+            activeTrains.erase(record);
+            break;
+        }
+
+    }
+
+//    EntityManager* entityManager = EntityManager::getInstance();
+//
+//    if (entityManager->getEntity("warning" + trainRecord.platform.number) != nullptr) {
+//
+//        WarningSymbol* warningSymbol = (WarningSymbol*)entityManager->getEntity("warning" + trainRecord.platform.number);
+//        SpriteComponent* spriteComponent = (SpriteComponent*)warningSymbol->getComponent(1);
+//        Sprite* sprite = spriteComponent->getSprite();
+//
+//        this->scene->removeChild(sprite, true);
+//
+//    }
+
+}

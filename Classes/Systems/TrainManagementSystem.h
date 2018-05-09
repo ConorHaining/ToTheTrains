@@ -54,6 +54,7 @@ struct Platform{
     Location stoppingLocation;
     Location despawnLocation;
     Location warningLocation;
+    Sprite* warningSymbol;
 };
 
 struct TrainRecord {
@@ -79,6 +80,7 @@ public:
     bool isPlatformFull(Platform platform);
 
     void spawnTrain(TrainRecord trainRecord);
+    void despawnTrain(TrainRecord trainRecord);
     void triggerWarningSign(TrainRecord trainRecord);
 
     void setTrainState(TrainRecord record, TrainState state);

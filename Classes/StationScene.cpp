@@ -135,7 +135,6 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
         SpriteComponent* spriteComponent = (SpriteComponent*)trainEntity->getComponent(6);
         Sprite* trainSprite = spriteComponent->getSprite();
 
-        cocos2d::log("LOL");
 
         if ( trainSprite->getBoundingBox().containsPoint(touchPoint)) {
 
@@ -163,6 +162,8 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
                 trainManagementSystem->setTrainState(*record, TrainState::departed);
 
                 trainSprite->runAction(action);
+
+                trainManagementSystem->despawnTrain(*record);
 
 
             } else {
