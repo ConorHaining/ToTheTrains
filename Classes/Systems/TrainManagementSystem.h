@@ -76,7 +76,6 @@ public:
 
     vector<TrainRecord> fetchDueTrains(Time* currentTime);
     vector<TrainRecord> fetchArrivedTrains();
-    void queueTrain(TrainRecord trainRecord);
 
     bool isPlatformClear(Platform platform);
     bool isPlatformFull(Platform platform);
@@ -91,8 +90,6 @@ private:
     Scene* scene;
 
     vector<TrainRecord> timetable {};
-//    vector<TrainRecord> activeTrains {};
-//    vector<TrainRecord> queuedTrains {};
 
     vector<Platform> platforms {};
 
