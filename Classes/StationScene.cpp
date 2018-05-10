@@ -141,13 +141,15 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
             if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == inbound) {
 
                 // Open Doors
-                trainSprite->setColor(Color3B::BLUE);
+//                trainSprite->setColor(Color3B::BLUE);
+                trainSprite->setTexture("Scotrail170-DoorsOpen.png");
                 trainManagementSystem->setTrainState(*record, TrainState::doorsOpen);
 
             } else if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsOpen) {
 
                 // Close Doors
-                trainSprite->setColor(Color3B::ORANGE);
+//                trainSprite->setColor(Color3B::ORANGE);
+                trainSprite->setTexture("Scotrail170-DoorsClosed.png");
                 trainManagementSystem->setTrainState(*record, TrainState::doorsClosed);
 
             } else if  (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsClosed) {
@@ -158,7 +160,7 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
                 MoveTo* action = MoveTo::create(3, Vec2(x, y));
 
                 // Depart Train
-                trainSprite->setColor(Color3B::MAGENTA);
+//                trainSprite->setColor(Color3B::MAGENTA);
                 trainManagementSystem->setTrainState(*record, TrainState::outbound);
 
                 trainSprite->runAction(action);
@@ -168,7 +170,7 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
 
             } else {
 
-                trainSprite->setColor(Color3B::RED);
+//                trainSprite->setColor(Color3B::RED);
 
             }
 
