@@ -78,11 +78,10 @@ void GameTimeSystem::drawTimeFirst() {
 
     drawTime();
 
-    auto dirs = Director::getInstance();
-    Size visibleSize = dirs->getVisibleSize();
-    Vec2 origin = dirs->getVisibleOrigin();
+    int x = 60;
+    int y = 20;
 
-    label->getLabel()->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    label->getLabel()->setPosition(Vec2(x, y));
 
     this->scene->addChild(label->getLabel(), 999);
 }
