@@ -49,7 +49,9 @@ void EntityManager::deleteEntity(std::string tag) {
     for (std::vector<EntityStorage>::iterator it = entities.begin() ; it != entities.end(); ++it) {
 
         if((*it).tag == tag) {
-            (*it).entity->markForDeletion();
+            int i = 1 + 1;
+            entities.erase(it);
+            return;
         }
 
     }

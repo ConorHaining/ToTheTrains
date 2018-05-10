@@ -114,7 +114,6 @@ void StationScene::update(float delta) {
             cocos2d::log("...");
         } else {
 
-            trainManagementSystem->queueTrain(*record);
             trainManagementSystem->triggerWarningSign(*record);
 
         }
@@ -160,7 +159,7 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
 
                 // Depart Train
                 trainSprite->setColor(Color3B::MAGENTA);
-                trainManagementSystem->setTrainState(*record, TrainState::departed);
+                trainManagementSystem->setTrainState(*record, TrainState::outbound);
 
                 trainSprite->runAction(action);
 

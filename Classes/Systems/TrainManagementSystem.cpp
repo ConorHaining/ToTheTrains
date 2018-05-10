@@ -33,7 +33,7 @@ vector<TrainRecord> TrainManagementSystem::fetchDueTrains(Time *time) {
 
         bool atPlatform = (record->trainState == inbound) || (record->trainState == doorsOpen) || (record->trainState == doorsClosed) || (record->trainState == outbound);
 
-        if (record->arrivalTime <= time && !atPlatform){
+        if (record->arrivalTime <= time && !atPlatform && record->trainState != departed){
             records.push_back(*record);
         } else if (record->arrivalTime == time && record->trainState == enroute) {
             records.push_back(*record);
@@ -57,7 +57,6 @@ bool TrainManagementSystem::isPlatformFull(Platform platform) {
         bool atPlatform = (record->trainState == inbound) || (record->trainState == doorsOpen) || (record->trainState == doorsClosed) || (record->trainState == outbound);
 
         if ((record->platform.number == platform.number) && atPlatform) {
-//            record->trainState = queued;
             return true;
         }
 
@@ -292,18 +291,24 @@ void TrainManagementSystem::setTrainState(TrainRecord trainRecord, TrainState st
 
 void TrainManagementSystem::despawnTrain(TrainRecord trainRecord) {
 
-//    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
-//
-//        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
-//        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
-//        bool equalPlatform = trainRecord.platform.number == record->platform.number;
-//
-//        if (equalhour && equalMinute && equalPlatform) {
-//            activeTrains.erase(record);
-//            break;
-//        }
-//
-//    }
+    EntityManager* entityManager = EntityManager::getInstance();
+
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
+
+        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
+        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
+        bool equalPlatform = trainRecord.platform.number == record->platform.number;
+
+        if (equalhour && equalMinute && equalPlatform) {
+
+            string tag = "train"  + trainRecord.platform.number;
+            record->trainState = departed;
+            entityManager->deleteEntity(tag);
+
+
+        }
+
+    }
 
 //    EntityManager* entityManager = EntityManager::getInstance();
 //
@@ -316,25 +321,5 @@ void TrainManagementSystem::despawnTrain(TrainRecord trainRecord) {
 //        this->scene->removeChild(sprite, true);
 //
 //    }
-
-}
-
-void TrainManagementSystem::queueTrain(TrainRecord trainRecord) {
-
-//    for (vector<TrainRecord>::iterator record = this->queuedTrains.begin(); record != this->queuedTrains.end(); ++record) {
-//
-//        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
-//        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
-//        bool equalPlatform = trainRecord.platform.number == record->platform.number;
-//
-//        if (equalhour && equalMinute && equalPlatform) {
-//
-//            return;
-//
-//        }
-//
-//    }
-//
-//    queuedTrains.push_back(trainRecord);
 
 }
