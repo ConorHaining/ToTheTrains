@@ -114,6 +114,7 @@ void StationScene::update(float delta) {
             cocos2d::log("...");
         } else {
 
+            trainManagementSystem->queueTrain(*record);
             trainManagementSystem->triggerWarningSign(*record);
 
         }

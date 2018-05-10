@@ -33,3 +33,11 @@ Time* Time::operator+(int i) {
 
     return newTime;
 }
+
+bool Time::operator<=(Time *otherTime) const {
+    if((this->hour <= otherTime->hour) && (this->minute <= otherTime->minute)) {
+        return true;
+    } else {
+        return false;
+    }
+}

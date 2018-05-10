@@ -31,10 +31,13 @@ vector<TrainRecord> TrainManagementSystem::fetchDueTrains(Time *time) {
 
     for (vector<TrainRecord>::iterator record = this->timetable.begin(); record != this->timetable.end(); ++record) {
 
-        if (record->arrivalTime == time && !record->complete) {
+        bool atPlatform = (record->trainState == inbound) || (record->trainState == doorsOpen) || (record->trainState == doorsClosed) || (record->trainState == outbound);
+
+        if (record->arrivalTime <= time && !atPlatform){
+            records.push_back(*record);
+        } else if (record->arrivalTime == time && record->trainState == enroute) {
             records.push_back(*record);
         }
-
     }
 
     return records;
@@ -49,9 +52,12 @@ bool TrainManagementSystem::isPlatformClear(Platform platform) {
 
 bool TrainManagementSystem::isPlatformFull(Platform platform) {
 
-    for (vector<TrainRecord>::iterator record = activeTrains.begin(); record != activeTrains.end(); ++record) {
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
 
-        if (record->platform.number == platform.number) {
+        bool atPlatform = (record->trainState == inbound) || (record->trainState == doorsOpen) || (record->trainState == doorsClosed) || (record->trainState == outbound);
+
+        if ((record->platform.number == platform.number) && atPlatform) {
+//            record->trainState = queued;
             return true;
         }
 
@@ -123,7 +129,6 @@ void TrainManagementSystem::spawnTrain(TrainRecord trainRecord) {
             record->complete = true;
             record->train = train;
             record->trainState = inbound;
-            activeTrains.push_back(*record);
             continue;
         }
 
@@ -250,29 +255,27 @@ Location TrainManagementSystem::buildLocation(rapidjson::Value &currentRecord, c
 
 vector<TrainRecord> TrainManagementSystem::fetchArrivedTrains() {
 
-//    vector<TrainRecord> records {};
-//
-//    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
-//
-////        Time* platformTime = record->arrivalTime + 3;
-//
-//        if ((record->arrivalTime.minute + 4) == currentTime->minute) {
-//
-//            records.push_back(*record);
-//
-//        }
-//
-//    }
-//
-//    return records;
+    vector<TrainRecord> records {};
 
-    return activeTrains;
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
+
+    bool atPlatform = (record->trainState == inbound) || (record->trainState == doorsOpen) || (record->trainState == doorsClosed) || (record->trainState == outbound);
+
+        if (atPlatform) {
+
+            records.push_back(*record);
+
+        }
+
+    }
+
+    return records;
 
 }
 
 void TrainManagementSystem::setTrainState(TrainRecord trainRecord, TrainState state) {
 
-    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
         bool equalMinute = record->arrivalTime.minute == trainRecord.arrivalTime.minute;
         bool equalHour = record->arrivalTime.hour == trainRecord.arrivalTime.hour;
         bool equalPlatform = record->platform.number == trainRecord.platform.number;
@@ -281,7 +284,7 @@ void TrainManagementSystem::setTrainState(TrainRecord trainRecord, TrainState st
 
             record->trainState = state;
 
-            continue;
+            return;
         }
 
     }
@@ -289,18 +292,18 @@ void TrainManagementSystem::setTrainState(TrainRecord trainRecord, TrainState st
 
 void TrainManagementSystem::despawnTrain(TrainRecord trainRecord) {
 
-    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
-
-        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
-        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
-        bool equalPlatform = trainRecord.platform.number == record->platform.number;
-
-        if (equalhour && equalMinute && equalPlatform) {
-            activeTrains.erase(record);
-            break;
-        }
-
-    }
+//    for (vector<TrainRecord>::iterator record = this->activeTrains.begin(); record != this->activeTrains.end(); ++record) {
+//
+//        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
+//        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
+//        bool equalPlatform = trainRecord.platform.number == record->platform.number;
+//
+//        if (equalhour && equalMinute && equalPlatform) {
+//            activeTrains.erase(record);
+//            break;
+//        }
+//
+//    }
 
 //    EntityManager* entityManager = EntityManager::getInstance();
 //
@@ -313,5 +316,25 @@ void TrainManagementSystem::despawnTrain(TrainRecord trainRecord) {
 //        this->scene->removeChild(sprite, true);
 //
 //    }
+
+}
+
+void TrainManagementSystem::queueTrain(TrainRecord trainRecord) {
+
+//    for (vector<TrainRecord>::iterator record = this->queuedTrains.begin(); record != this->queuedTrains.end(); ++record) {
+//
+//        bool equalhour = trainRecord.arrivalTime.hour == record->arrivalTime.hour;
+//        bool equalMinute = trainRecord.arrivalTime.minute == record->arrivalTime.minute;
+//        bool equalPlatform = trainRecord.platform.number == record->platform.number;
+//
+//        if (equalhour && equalMinute && equalPlatform) {
+//
+//            return;
+//
+//        }
+//
+//    }
+//
+//    queuedTrains.push_back(trainRecord);
 
 }
