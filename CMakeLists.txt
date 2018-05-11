@@ -176,6 +176,7 @@ set(GAME_SRC
         Classes/Entities/Station.cpp
         Classes/Entities/Train.cpp
         Classes/Entities/GameClock.cpp
+        Classes/Entities/ScoreEntity.cpp
         Classes/Entities/WarningSymbol.cpp
         Classes/Systems/StationRenderSystem.cpp
         Classes/Systems/GameTimeSystem.cpp
@@ -204,6 +205,7 @@ set(GAME_HEADERS
         Classes/Entities/Station.h
         Classes/Entities/Train.h
         Classes/Entities/GameClock.h
+        Classes/Entities/ScoreEntityck.h
         Classes/Entities/WarningSymbol.h
         Classes/Systems/StationRenderSystem.h
         Classes/Systems/GameTimeSystem.h
