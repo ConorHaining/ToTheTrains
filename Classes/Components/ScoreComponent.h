@@ -10,7 +10,7 @@
 
 class ScoreComponent : public ComponentInterface{
 private:
-    int score;
+    int score = 0;
 public:
     int getScore() const;
 
