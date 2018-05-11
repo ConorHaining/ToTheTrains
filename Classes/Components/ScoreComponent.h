@@ -6,7 +6,9 @@
 #define PROJ_ANDROID_STUDIO_SCORECOMPONENT_H
 
 
-class ScoreComponent {
+#include <ComponentInterface.h>
+
+class ScoreComponent : public ComponentInterface{
 private:
     int score;
 public:
