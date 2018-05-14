@@ -94,7 +94,7 @@ bool StationScene::init(string level)
     touchListener->setSwallowTouches(true);
 
     touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::doorControl, this);
-//    touchListener->onTouchMoved = CC_CALLBACK_2(StationScene::moveCamera, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(StationScene::moveCamera, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
     /**
@@ -264,6 +264,29 @@ void StationScene::moveCamera(Touch *touch, Event *event) {
 
     EntityManager* entityManager = EntityManager::getInstance();
     SpriteComponent* sprite = (SpriteComponent*)entityManager->getEntity("Station")->getComponent(1);
+
+    auto dirs = Director::getInstance();
+    Size visibleSize = dirs->getVisibleSize();
+    Vec2 origin = dirs->getVisibleOrigin();
+
+    float leftEdgeScreen = origin.x;
+    float rightEdgeScreen = origin.x + visibleSize.width;
+
+    float leftSideStation = (sprite->getSprite()->getPosition().x) - (sprite->getSprite()->getContentSize().width / 2);
+    float rightSideStation = (sprite->getSprite()->getPosition().x) + (sprite->getSprite()->getContentSize().width / 2);
+
+    log("Screen L: %f R: %f Station L: %f R: %F || D: %f", leftEdgeScreen, rightEdgeScreen, leftSideStation, rightSideStation, touch->getDelta().x);
+
+    if ((ceil(leftSideStation) >= leftEdgeScreen) && (touch->getDelta().x > 0)) {
+
+
+
+        return;
+    } else if ((floor(rightSideStation) <= rightEdgeScreen) && (touch->getDelta().x < 0)) {
+
+
+        return;
+    }
 
     float x = this->getPositionX() + touch->getDelta().x;
     this->setPositionX(x);

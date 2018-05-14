@@ -105,8 +105,8 @@ bool MenuScene::onBeginTouch(Touch *touch, Event *event) {
 
     } else if (btn4->getBoundingBox().containsPoint(touchPoint)) {
 
-//        Scene* level = StationScene::create("level4");
-//        Director::getInstance()->replaceScene(TransitionFade::create(1, level, Color3B(119,12,47)));
+        Scene* level = StationScene::create("level4");
+        Director::getInstance()->replaceScene(TransitionFade::create(1, level, Color3B(119,12,47)));
 
     } else if (btn5->getBoundingBox().containsPoint(touchPoint)) {
 
