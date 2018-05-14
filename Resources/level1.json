@@ -1,0 +1,101 @@
+{
+	"timetable": [
+    {
+      "arrivalTime": "12:03",
+      "departureTime": "12:13",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "12:18",
+      "departureTime": "12:28",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "12:31",
+      "departureTime": "12:41",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "12:45",
+      "departureTime": "12:55",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "13:00",
+      "departureTime": "13:10",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "13:16",
+      "departureTime": "13:26",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "13:26",
+      "departureTime": "13:36",
+      "platform": "1"
+    },    
+    {
+      "arrivalTime": "13:39",
+      "departureTime": "13:49",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "13:45",
+      "departureTime": "13:55",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "13:59",
+      "departureTime": "14:09",
+      "platform": "1"
+    }  
+    
+	],
+	"platforms": {
+      "1" : {
+        "spawnLocation": {
+          "x": 135,
+          "y": -200
+        },
+        "stoppingLocation": {
+          "x": 135,
+          "y": 250
+        },
+        "despawnLocation": {
+          "x": 135,
+          "y": 750
+        },
+        "warningLocation": {
+          "x": 135,
+          "y": 100
+        }
+      },
+      "2" : {
+        "spawnLocation": {
+          "x": 182,
+          "y": 750
+        },
+        "stoppingLocation": {
+          "x": 182,
+          "y": 230
+        },
+        "despawnLocation": {
+          "x": 182,
+          "y": -220
+        },
+        "warningLocation": {
+          "x": 182,
+          "y": 400
+        }
+      }
+    },
+    "settings": {
+      "station": "Croy",
+      "startTime": "11:58",
+      "endTime": "15:00",
+      "story": "Welcome to Croy. \n\nYour job is to get the trains in to the station and out as timely as possible.\n\n A train will roll into the platform, and when it illuminates, you can touch it to open the doors. You can touch it again to close the doors. It will illuminate again when it's time to depart. \n\n Your score is based on how close to the departure time you dispatch the train. \n\nGood Luck.",
+      "winScreen": "Congratulations! \n\n That's the end of your shift, and you've been able to move all the trains you needed to today. \n\n Time to move on to your next shift.",
+      "nextLevel": "level2"
+    }
+}

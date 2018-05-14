@@ -38,6 +38,7 @@ enum TrainState{
     enroute,
     queued,
     inbound,
+    atPlatform,
     doorsOpen,
     doorsClosed,
     outbound,
@@ -45,8 +46,8 @@ enum TrainState{
 };
 
 struct Location {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 struct Platform{
@@ -72,19 +73,24 @@ public:
 
     TrainManagementSystem(Scene* scene);
 
-    void loadInLevel(string fileName);
+    void buildTimetable(string fileName);
 
     vector<TrainRecord> fetchDueTrains(Time* currentTime);
+    vector<TrainRecord> fetchReadyToDepart(Time* currentTime);
     vector<TrainRecord> fetchArrivedTrains();
 
     bool isPlatformClear(Platform platform);
     bool isPlatformFull(Platform platform);
+
+    bool isRemainingTrains();
 
     void spawnTrain(TrainRecord trainRecord);
     void despawnTrain(TrainRecord trainRecord);
     void triggerWarningSign(TrainRecord trainRecord);
 
     void setTrainState(TrainRecord record, TrainState state);
+
+    void setCameraChange(float change);
 
 private:
     Scene* scene;

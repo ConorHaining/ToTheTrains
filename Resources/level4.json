@@ -1,0 +1,55 @@
+{
+	"timetable": [
+    {
+      "arrivalTime": "07:00",
+      "departureTime": "07:08",
+      "platform": "1"
+    }
+	],
+	"platforms": {
+      "1" : {
+        "spawnLocation": {
+          "x": -1135,
+          "y": -200
+        },
+        "stoppingLocation": {
+          "x": -1135,
+          "y": 250
+        },
+        "despawnLocation": {
+          "x": -1135,
+          "y": 750
+        },
+        "warningLocation": {
+          "x": -1135,
+          "y": 100
+        }
+      },
+      "2" : {
+        "spawnLocation": {
+          "x": -1135,
+          "y": 750
+        },
+        "stoppingLocation": {
+          "x": -1135,
+          "y": 230
+        },
+        "despawnLocation": {
+          "x": -1135,
+          "y": -220
+        },
+        "warningLocation": {
+          "x": -1135,
+          "y": 400
+        }
+      }
+    },
+    "settings": {
+      "station": "Dundee",
+      "startTime": "06:58",
+      "endTime": "15:00",
+      "story": "You weren't meant to get this far yet. It's not finished yet.",
+      "winScreen": "Phew!\n\n",
+      "nextLevel": "level5"
+    }
+}

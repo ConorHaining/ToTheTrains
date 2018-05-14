@@ -6,8 +6,18 @@
 #define PROJ_ANDROID_STUDIO_SCORESYSTEM_H
 
 
-class ScoreSystem {
+#include <Components/Time.h>
+#include "TrainManagementSystem.h"
 
+class ScoreSystem {
+public:
+    void updateScore(Time* currentTime, Time departureTime);
+    ScoreSystem(Scene* scene);
+    void drawScore();
+    void drawScoreFirst();
+
+private:
+    Scene* scene;
 };
 
 

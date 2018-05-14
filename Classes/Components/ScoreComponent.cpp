@@ -9,5 +9,5 @@ int ScoreComponent::getScore() const {
 }
 
 void ScoreComponent::setScore(int score) {
-    ScoreComponent::score = score;
+    ScoreComponent::score += score;
 }

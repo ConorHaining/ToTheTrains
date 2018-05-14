@@ -17,7 +17,7 @@ StationRenderSystem::StationRenderSystem(cocos2d::Scene *scene) {
 void StationRenderSystem::drawStation() {
 
     EntityManager* entityManager = EntityManager::getInstance();
-    SpriteComponent* sprite = (SpriteComponent*)entityManager->getEntity("Croy")->getComponent(1);
+    SpriteComponent* sprite = (SpriteComponent*)entityManager->getEntity("Station")->getComponent(1);
     log("Got Sprite");
 
     auto dirs = Director::getInstance();

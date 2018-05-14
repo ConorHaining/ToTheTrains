@@ -11,3 +11,8 @@ void LabelComponent::createLabel(std::string text) {
 Label *LabelComponent::getLabel() {
     return this->label;
 }
+
+void LabelComponent::createLabel(std::string text, bool stationary) {
+    label = Label::createWithTTF(text, "PressStart2P.ttf", 16);
+    label->setTag(1);
+}

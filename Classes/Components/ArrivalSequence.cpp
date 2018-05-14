@@ -4,10 +4,11 @@
 
 #include "ArrivalSequence.h"
 
-cocos2d::MoveTo *ArrivalSequence::getMovement() const {
+cocos2d::EaseOut *ArrivalSequence::getMovement() const {
     return movement;
 }
 
 void ArrivalSequence::setMovement(StoppingLocation* stoppingLocation) {
-    movement = cocos2d::MoveTo::create(3, cocos2d::Vec2(stoppingLocation->getX(), stoppingLocation->getY()));
+    cocos2d::MoveTo* moving = cocos2d::MoveTo::create(3, cocos2d::Vec2(stoppingLocation->getX(), stoppingLocation->getY()));
+    movement = cocos2d::EaseOut::create(moving->clone(), 1);
 }

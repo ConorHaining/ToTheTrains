@@ -10,6 +10,7 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
+using namespace std;
 
 class GameTimeSystem {
 private:
@@ -18,7 +19,12 @@ private:
     std::string zerofill(int i);
 public:
     GameTimeSystem(Scene* scene);
+
     void setTime(int hour, int minute);
+    void setStartTime(string startTime);
+    void setEndTime(string endTime);
+
+
     GameClock* getClock();
     Time* getTime();
     void incrementTime(float delta);

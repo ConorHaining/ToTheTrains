@@ -13,7 +13,7 @@ TrainManagementSystem::TrainManagementSystem(Scene *scene) {
     this->scene = scene;
 }
 
-void TrainManagementSystem::loadInLevel(string fileName) {
+void TrainManagementSystem::buildTimetable(string fileName) {
 
     string fileContents;
     fileContents = FileUtils::getInstance()->getStringFromFile(fileName);
@@ -321,6 +321,55 @@ void TrainManagementSystem::despawnTrain(TrainRecord trainRecord) {
         entityManager->deleteEntity(tag);
 
         this->scene->removeChild(sprite, true);
+
+    }
+
+}
+
+vector<TrainRecord> TrainManagementSystem::fetchReadyToDepart(Time *currentTime) {
+
+    vector<TrainRecord> records {};
+
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
+
+        if (record->trainState == doorsClosed && record->departureTime <= currentTime) {
+
+            records.push_back(*record);
+
+        }
+
+    }
+
+    return records;
+
+}
+
+bool TrainManagementSystem::isRemainingTrains() {
+
+    int count = 0;
+
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
+
+        if (record->trainState == departed) {
+
+            count++;
+
+        }
+
+    }
+
+    return count == timetable.size();
+
+}
+
+void TrainManagementSystem::setCameraChange(float change) {
+
+    for (vector<TrainRecord>::iterator record = timetable.begin(); record != timetable.end(); ++record) {
+
+        record->platform.despawnLocation.x += change;
+        record->platform.stoppingLocation.x += change;
+        record->platform.spawnLocation.x += change;
+        record->platform.warningLocation.x += change;
 
     }
 

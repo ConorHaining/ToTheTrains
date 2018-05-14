@@ -82,6 +82,7 @@ void GameTimeSystem::drawTimeFirst() {
     int y = 20;
 
     label->getLabel()->setPosition(Vec2(x, y));
+    label->getLabel()->setColor(Color3B(248,232,154));
 
     this->scene->addChild(label->getLabel(), 999);
 }
@@ -127,4 +128,19 @@ Time *GameTimeSystem::getTime() {
     Time *gameTime = (Time *) gameClock->getComponent(1);
 
     return gameTime;
+}
+
+void GameTimeSystem::setStartTime(string startTime) {
+
+    std::string hour = startTime.substr(0, 2);
+    std::string minute = startTime.substr(3, 2);
+
+    int hourInt = std::atoi(hour.c_str());
+    int minuteInt = std::atoi(minute.c_str());
+
+    this->setTime(hourInt, minuteInt);
+}
+
+void GameTimeSystem::setEndTime(string endTime) {
+
 }

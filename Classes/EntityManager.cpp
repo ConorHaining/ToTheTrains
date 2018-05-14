@@ -19,6 +19,11 @@ EntityManager *EntityManager::getInstance() {
 
 }
 
+EntityManager *EntityManager::resetInstance() {
+    delete instance;
+    instance = NULL;
+}
+
 void EntityManager::createEntity(std::string tag, EntityInterface* entity) {
 
     // Create new struct
@@ -58,17 +63,6 @@ void EntityManager::deleteEntity(std::string tag) {
 
 }
 
-void EntityManager::createComponent(std::string tag, ComponentInterface* component) {
-
-    // Create new struct
-    ComponentStorage componentStorage;
-    componentStorage.tag = tag;
-    componentStorage.component = component;
-
-    // Store struct
-    components.push_back(componentStorage);
-}
-
 ComponentInterface* EntityManager::getComponent(std::string tag) {
 
     for (std::vector<ComponentStorage>::iterator it = components.begin() ; it != components.end(); ++it) {
@@ -80,19 +74,6 @@ ComponentInterface* EntityManager::getComponent(std::string tag) {
     }
 
     return nullptr;
-
-}
-
-void EntityManager::deleteComponent(std::string tag) {
-
-    for (std::vector<ComponentStorage>::iterator it = components.begin() ; it != components.end(); ++it) {
-
-        if((*it).tag == tag) {
-            //TODO Delete Components
-            (*it).component;
-        }
-
-    }
 
 }
 

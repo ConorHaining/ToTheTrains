@@ -15,6 +15,7 @@ private:
     Label* label;
 public:
     void createLabel(std::string text);
+    void createLabel(std::string text, bool stationary);
     Label* getLabel();
 };
 

@@ -12,11 +12,11 @@
 
 class ArrivalSequence : public ComponentInterface {
 private:
-    cocos2d::MoveTo* movement;
+    cocos2d::EaseOut* movement;
 public:
     void setMovement(StoppingLocation* stoppingLocation);
 
-    cocos2d::MoveTo *getMovement() const;
+    cocos2d::EaseOut *getMovement() const;
 
 };
 

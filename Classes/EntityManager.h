@@ -38,18 +38,16 @@ private:
 public:
 
     static EntityManager* getInstance();
+    static EntityManager* resetInstance();
 
     void createEntity(std::string tag, EntityInterface* entity);
     EntityInterface* getEntity(std::string tag);
     void deleteEntity(std::string tag);
 
-    void createComponent(std::string tag, ComponentInterface* component);
     ComponentInterface* getComponent(std::string tag);
-    void deleteComponent(std::string tag);
 
 
     void addEntityToComponent(EntityInterface* entity, ComponentInterface* component);
-    void addEntityToComponent(EntityInterface* entity, ComponentInterface* component, string tag);
 };
 
 

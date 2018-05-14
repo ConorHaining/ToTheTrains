@@ -11,18 +11,23 @@
 #include <Components/SpawnLocation.h>
 #include <Components/StoppingLocation.h>
 #include <Components/ArrivalSequence.h>
+#include <Entities/ScoreEntity.h>
+#include <Components/ScoreComponent.h>
+#include <Systems/ScoreSystem.h>
 #include "StationScene.h"
 #include "SimpleAudioEngine.h"
 #include "EntityManager.h"
 
 USING_NS_CC;
 using namespace std;
+using namespace CocosDenshion;
 
-Scene* StationScene::createScene()
-{
-    log("Creating StationScene");
-    return StationScene::create();
-}
+//Scene* StationScene::createScene(string level)
+//{
+//    log("Creating StationScene");
+//    this->setName(level);
+//    return StationScene::create();
+//}
 
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
@@ -32,7 +37,7 @@ static void problemLoading(const char* filename)
 }
 
 // on "init" you need to initialize your instance
-bool StationScene::init()
+bool StationScene::init(string level)
 {
 
     //////////////////////////////
@@ -42,58 +47,67 @@ bool StationScene::init()
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    // Create EntityManager
-    log("Creating EntityManager");
-    entityManager = EntityManager::getInstance();
-    log("Created EntityManager");
-
-    // Load in Entities
-    log("Creating Station Entity");
-    Station* stationEntity = new Station();
-    log("Adding Station Entity");
-    entityManager->createEntity("Croy", stationEntity);
-    log("Created Station Entity");
-
-    // Attach Components
-    SpriteComponent* sprite = new SpriteComponent();
-    sprite->createSprite("CroyStation.png");
-    entityManager->addEntityToComponent(stationEntity, sprite);
-    log("Created Sprite Components");
-
-    // Run StationRenderSystem
-    StationRenderSystem* stationRenderSystem = new StationRenderSystem(this);
-    stationRenderSystem->drawStation();
-    log("Station Draw");
-
-    log("Creating Game Clock");
-    GameClock* gameClock = new GameClock();
-    entityManager->createEntity("clock", gameClock);
-    Time* time = new Time();
-    entityManager->addEntityToComponent(gameClock, time);
-    LabelComponent* labelComponent = new LabelComponent;
-    labelComponent->createLabel("12:00");
-    entityManager->addEntityToComponent(gameClock, labelComponent);
+    /**
+     * Game System Registration
+     */
+    levelCreationSystem = new LevelCreationSystem();
     gameTimeSystem = new GameTimeSystem(this);
-    gameTimeSystem->setTime(12, 0);
-    gameTimeSystem->drawTimeFirst();
-    log("Created Game Clock");
-
+    scoreSystem = new ScoreSystem(this);
     trainManagementSystem = new TrainManagementSystem(this);
-    string level = "level.json";
-    trainManagementSystem->loadInLevel(level);
-    cocos2d::log("Level Loaded");
+    stationRenderSystem = new StationRenderSystem(this);
+    gameStorySystem = new GameStorySystem(this);
 
-    cocos2d::log("Registering Touch Events");
+    /**
+     * Initialise level from JSON file
+     */
+    levelCreationSystem->initLevel(level + ".json");
+
+    /**
+     * Create Station
+     */
+    levelCreationSystem->createStation();
+    stationRenderSystem->drawStation();
+
+    /**
+     * Create Game Clock & set start and end times
+     */
+    levelCreationSystem->initGameClock();
+    gameTimeSystem->setStartTime(levelCreationSystem->getStartTime());
+//    gameTimeSystem->setEndTime(levelCreationSystem->getEndTime());
+    gameTimeSystem->drawTimeFirst();
+
+    /**
+     * Create the Game Score
+     */
+    levelCreationSystem->initLevelScore();
+    scoreSystem->drawScoreFirst();
+
+    /**
+     * Build the level's Timetable
+     */
+    trainManagementSystem->buildTimetable(level + ".json");
+
+    /**
+     * Register Game's touch events
+     */
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
 
     touchListener->onTouchBegan = CC_CALLBACK_2(StationScene::doorControl, this);
+//    touchListener->onTouchMoved = CC_CALLBACK_2(StationScene::moveCamera, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
-    this->scheduleUpdate();
+    /**
+     * Set Background Audio
+     */
+    auto audio = SimpleAudioEngine::getInstance();
+    audio->playBackgroundMusic("Dreamer.mp3", true);
+
+    /**
+     * Show level story
+     */
+    levelCreationSystem->initLevelStory();
+    gameStorySystem->drawStory();
 
     return true;
 }
@@ -107,11 +121,9 @@ void StationScene::update(float delta) {
 
     for (vector<TrainRecord>::iterator record = dueTrains.begin(); record != dueTrains.end(); ++record) {
 
-//        cocos2d::log("Train(s) are due");
         if (trainManagementSystem->isPlatformClear(record->platform)) {
 
             trainManagementSystem->spawnTrain(*record);
-            cocos2d::log("...");
         } else {
 
             trainManagementSystem->triggerWarningSign(*record);
@@ -121,14 +133,82 @@ void StationScene::update(float delta) {
     }
 
 
+    vector<TrainRecord> arrivedTrains = trainManagementSystem->fetchArrivedTrains();
+
+    for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
+
+        Train* trainEntity = record->train;
+        SpriteComponent* spriteComponent = (SpriteComponent*)trainEntity->getComponent(6);
+        Sprite* trainSprite = spriteComponent->getSprite();
+
+//        bool atPlatform = (record->trainState == doorsOpen) || (record->trainState == doorsClosed) || (record->trainState == outbound);
+
+        if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == inbound) {
+
+            trainSprite->setTexture("Scotrail170-Action.png");
+
+        }
+
+    }
+
+    vector<TrainRecord> readyToDepart = trainManagementSystem->fetchReadyToDepart(currentTime);
+
+    for (vector<TrainRecord>::iterator record = readyToDepart.begin(); record != readyToDepart.end(); ++record) {
+
+        Train* trainEntity = record->train;
+        SpriteComponent* spriteComponent = (SpriteComponent*)trainEntity->getComponent(6);
+        Sprite* trainSprite = spriteComponent->getSprite();
+
+        trainSprite->setTexture("Scotrail170-Action.png");
+
+    }
+
+    bool endLevel = trainManagementSystem->isRemainingTrains();
+
+    if (endLevel) {
+
+        this->unscheduleUpdate();
+
+        gameStorySystem->drawEndScreen(levelCreationSystem->getEndStory());
+
+    }
 
 }
 
 bool StationScene::doorControl(Touch *touch, Event *event) {
 
+    EntityManager* entityManager = EntityManager::getInstance();
+    auto touchPoint = touch->getLocation();
+
+    SpriteComponent* btn = (SpriteComponent*)entityManager->getEntity("story")->getComponent(2);
+    Sprite* sprite = btn->getSprite();
+
+    if (sprite->getBoundingBox().containsPoint(touchPoint)) {
+
+        if (sprite->getTag() == 1) {
+
+            gameStorySystem->removeStory();
+
+            /**
+             * Schedule Update Loop
+             */
+            this->scheduleUpdate();
+
+        } else {
+
+            EntityManager::resetInstance();
+
+            Scene* level = StationScene::create(levelCreationSystem->getNextLevel());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, level, Color3B(119,12,47)));
+
+        }
+        return true;
+
+    }
+
     vector<TrainRecord> arrivedTrains = trainManagementSystem->fetchArrivedTrains();
 
-    auto touchPoint = touch->getLocation();
+
     for (vector<TrainRecord>::iterator record = arrivedTrains.begin(); record != arrivedTrains.end(); ++record) {
 
         Train* trainEntity = record->train;
@@ -141,16 +221,16 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
             if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == inbound) {
 
                 // Open Doors
-//                trainSprite->setColor(Color3B::BLUE);
                 trainSprite->setTexture("Scotrail170-DoorsOpen.png");
                 trainManagementSystem->setTrainState(*record, TrainState::doorsOpen);
+                return true;
 
             } else if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsOpen) {
 
                 // Close Doors
-//                trainSprite->setColor(Color3B::ORANGE);
                 trainSprite->setTexture("Scotrail170-DoorsClosed.png");
                 trainManagementSystem->setTrainState(*record, TrainState::doorsClosed);
+                return true;
 
             } else if  (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsClosed) {
 
@@ -160,25 +240,64 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
                 MoveTo* action = MoveTo::create(3, Vec2(x, y));
 
                 // Depart Train
-//                trainSprite->setColor(Color3B::MAGENTA);
+                trainSprite->setTexture("Scotrail170.png");
                 trainManagementSystem->setTrainState(*record, TrainState::outbound);
 
                 trainSprite->runAction(action);
 
                 trainManagementSystem->despawnTrain(*record);
 
-
-            } else {
-
-//                trainSprite->setColor(Color3B::RED);
+                Time* currentTime = gameTimeSystem->getTime();
+                scoreSystem->updateScore(currentTime, record->departureTime);
+                scoreSystem->drawScore();
+                return true;
 
             }
-
         }
 
 
     }
 
-    return true;
+}
+
+void StationScene::moveCamera(Touch *touch, Event *event) {
+
+    EntityManager* entityManager = EntityManager::getInstance();
+    SpriteComponent* sprite = (SpriteComponent*)entityManager->getEntity("Station")->getComponent(1);
+
+    float x = this->getPositionX() + touch->getDelta().x;
+    this->setPositionX(x);
+
+    trainManagementSystem->setCameraChange(touch->getDelta().x);
+
+    Vector<Node*> nodes = this->getChildren();
+
+    for (auto node : nodes) {
+
+        if (node->getTag() != 1) {
+
+            x = node->getPositionX() + touch->getDelta().x;
+            node->setPositionX(x);
+
+        }
+
+    }
+
+}
+
+StationScene *StationScene::create(string level) {
+
+    StationScene *pRet = new(std::nothrow) StationScene();
+    if (pRet && pRet->init(level))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    else
+    {
+        delete pRet;
+        pRet = NULL;
+        return NULL;
+    }
 
 }
