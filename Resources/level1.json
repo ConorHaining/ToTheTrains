@@ -96,6 +96,7 @@
       "endTime": "15:00",
       "story": "Welcome to Croy. \n\nYour job is to get the trains in to the station and out as timely as possible.\n\n A train will roll into the platform, and when it illuminates, you can touch it to open the doors. You can touch it again to close the doors. It will illuminate again when it's time to depart. \n\n Your score is based on how close to the departure time you dispatch the train. \n\nGood Luck.",
       "winScreen": "Congratulations! \n\n That's the end of your shift, and you've been able to move all the trains you needed to today. \n\n Time to move on to your next shift.",
-      "nextLevel": "level2"
+      "nextLevel": "level2",
+      "music": "Airport Lounge.mp3"
     }
 }

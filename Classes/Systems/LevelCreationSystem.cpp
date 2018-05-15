@@ -41,6 +41,9 @@ void LevelCreationSystem::initLevel(string filename) {
     string storyJSON (levelJSON["settings"]["story"].GetString());
     this->story = storyJSON;
 
+    string music (levelJSON["settings"]["music"].GetString());
+    this->music = music;
+
 }
 
 void LevelCreationSystem::createStation() {
@@ -127,4 +130,8 @@ string &LevelCreationSystem::getEndStory() {
 
 string &LevelCreationSystem::getNextLevel(){
     return nextLevel;
+}
+
+string &LevelCreationSystem::getMusic() {
+    return music;
 }

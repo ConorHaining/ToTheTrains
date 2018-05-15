@@ -4,42 +4,113 @@
       "arrivalTime": "07:00",
       "departureTime": "07:08",
       "platform": "1"
+    },
+    {
+      "arrivalTime": "07:00",
+      "departureTime": "07:08",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "07:00",
+      "departureTime": "07:08",
+      "platform": "3"
+    },
+    {
+      "arrivalTime": "07:00",
+      "departureTime": "07:08",
+      "platform": "4"
+    },
+    {
+      "arrivalTime": "07:05",
+      "departureTime": "07:08",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "07:05",
+      "departureTime": "07:08",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "07:05",
+      "departureTime": "07:08",
+      "platform": "3"
+    },
+    {
+      "arrivalTime": "07:05",
+      "departureTime": "07:08",
+      "platform": "4"
     }
 	],
 	"platforms": {
       "1" : {
         "spawnLocation": {
-          "x": -1135,
+          "x": 15,
           "y": -200
         },
         "stoppingLocation": {
-          "x": -1135,
+          "x": 15,
           "y": 250
         },
         "despawnLocation": {
-          "x": -1135,
+          "x": 15,
           "y": 750
         },
         "warningLocation": {
-          "x": -1135,
+          "x": 15,
           "y": 100
         }
       },
       "2" : {
         "spawnLocation": {
-          "x": -1135,
-          "y": 750
+          "x": 136,
+          "y": -200
         },
         "stoppingLocation": {
-          "x": -1135,
-          "y": 230
+          "x": 136,
+          "y": 130
         },
         "despawnLocation": {
-          "x": -1135,
+          "x": 136,
           "y": -220
         },
         "warningLocation": {
-          "x": -1135,
+          "x": 136,
+          "y": 100
+        }
+      },
+      "3" : {
+        "spawnLocation": {
+          "x": 188,
+          "y": -200
+        },
+        "stoppingLocation": {
+          "x": 188,
+          "y": 130
+        },
+        "despawnLocation": {
+          "x": 188,
+          "y": -220
+        },
+        "warningLocation": {
+          "x": 188,
+          "y": 100
+        }
+      },
+      "4" : {
+        "spawnLocation": {
+          "x": 300,
+          "y": 750
+        },
+        "stoppingLocation": {
+          "x": 300,
+          "y": 230
+        },
+        "despawnLocation": {
+          "x": 300,
+          "y": -220
+        },
+        "warningLocation": {
+          "x": 300,
           "y": 400
         }
       }
@@ -50,6 +121,7 @@
       "endTime": "15:00",
       "story": "You weren't meant to get this far yet. It's not finished yet.",
       "winScreen": "Phew!\n\n",
-      "nextLevel": "level5"
+      "nextLevel": "level5",
+      "music": "Dreamer.mp3"
     }
 }

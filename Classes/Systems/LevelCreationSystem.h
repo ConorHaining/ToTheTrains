@@ -27,6 +27,7 @@ private:
     string story;
     string endStory;
     string nextLevel;
+    string music;
 
 public:
     void createStation();
@@ -39,6 +40,7 @@ public:
     const string &getStory() const;
     string &getEndStory();
     string &getNextLevel();
+    string &getMusic();
 
     void initLevel(string filename);
 };

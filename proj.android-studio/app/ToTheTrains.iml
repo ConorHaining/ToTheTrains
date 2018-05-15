@@ -30,8 +30,8 @@
     <output url="file://$MODULE_DIR$/build/intermediates/classes/debug" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/debug" />
     <exclude-output />
-    <content url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures">
-      <sourceFolder url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures" isTestSource="false" />
+    <content url="file://$MODULE_DIR$/../../../../AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../AppData/Local/Android/Sdk/ndk-bundle/sources/android/cpufeatures" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../Classes">
       <sourceFolder url="file://$MODULE_DIR$/../../Classes" isTestSource="false" />
@@ -393,7 +393,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-resources" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifest-checker" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/ndkBuild" />
@@ -406,17 +405,16 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split-apk" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/splits-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 14 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="__local_aars__:/home/conor/projects/ToTheTrains/cocos2d/cocos/platform/android/java/libs/com.android.vending.expansion.zipfile.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="__local_aars__:/home/conor/projects/ToTheTrains/cocos2d/cocos/platform/android/java/libs/EngineDataManager.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="__local_aars__:/home/conor/projects/ToTheTrains/cocos2d/cocos/platform/android/java/libs/httpclient-4.4.1.1.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="__local_aars__:/home/conor/projects/ToTheTrains/cocos2d/cocos/platform/android/java/libs/android-async-http-1.4.9.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Public\Code\ToTheTrains\cocos2d\cocos\platform\android\java\libs\httpclient-4.4.1.1.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Public\Code\ToTheTrains\cocos2d\cocos\platform\android\java\libs\EngineDataManager.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Public\Code\ToTheTrains\cocos2d\cocos\platform\android\java\libs\com.android.vending.expansion.zipfile.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Public\Code\ToTheTrains\cocos2d\cocos\platform\android\java\libs\android-async-http-1.4.9.jar:unspecified@jar" level="project" />
     <orderEntry type="module" module-name="libcocos2dx" />
   </component>
 </module>

@@ -101,7 +101,7 @@ bool StationScene::init(string level)
      * Set Background Audio
      */
     auto audio = SimpleAudioEngine::getInstance();
-    audio->playBackgroundMusic("Dreamer.mp3", true);
+    audio->playBackgroundMusic(levelCreationSystem->getMusic().c_str(), true);
 
     /**
      * Show level story
@@ -223,6 +223,10 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
                 // Open Doors
                 trainSprite->setTexture("Scotrail170-DoorsOpen.png");
                 trainManagementSystem->setTrainState(*record, TrainState::doorsOpen);
+
+                auto hold = MoveBy::create(1, Vec2(0, 0));
+                trainSprite->runAction(hold);
+
                 return true;
 
             } else if (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsOpen) {
@@ -230,6 +234,10 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
                 // Close Doors
                 trainSprite->setTexture("Scotrail170-DoorsClosed.png");
                 trainManagementSystem->setTrainState(*record, TrainState::doorsClosed);
+
+                auto hold = MoveBy::create(1, Vec2(0, 0));
+                trainSprite->runAction(hold);
+
                 return true;
 
             } else if  (trainSprite->getNumberOfRunningActions() == 0 && record->trainState == doorsClosed) {
@@ -243,10 +251,15 @@ bool StationScene::doorControl(Touch *touch, Event *event) {
                 trainSprite->setTexture("Scotrail170.png");
                 trainManagementSystem->setTrainState(*record, TrainState::outbound);
 
-                trainSprite->runAction(action);
+                TrainRecord r = *record;
 
-                trainManagementSystem->despawnTrain(*record);
+                auto cb = CallFunc::create( [this, r] () {
+                    this->trainManagementSystem->despawnTrain(r);
+                });
 
+                auto seq = Sequence::create(action, cb, nullptr);
+
+                trainSprite->runAction(seq);
                 Time* currentTime = gameTimeSystem->getTime();
                 scoreSystem->updateScore(currentTime, record->departureTime);
                 scoreSystem->drawScore();
@@ -279,13 +292,12 @@ void StationScene::moveCamera(Touch *touch, Event *event) {
 
     if ((ceil(leftSideStation) >= leftEdgeScreen) && (touch->getDelta().x > 0)) {
 
-
-
         return;
+
     } else if ((floor(rightSideStation) <= rightEdgeScreen) && (touch->getDelta().x < 0)) {
 
-
         return;
+
     }
 
     float x = this->getPositionX() + touch->getDelta().x;

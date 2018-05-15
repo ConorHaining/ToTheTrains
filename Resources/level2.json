@@ -155,6 +155,7 @@
       "endTime": "15:00",
       "story": "You're here for the morning peak today.\n\nThings might be a little quiet until rush hours kicks in but when it does you'll be moving a lot of services.\n\nMake sure you're fast so they don't get backed up and become late, if you see a flashing hazzard ontop of a train, it means there's something else waiting to get to the platform so hurry up!",
       "winScreen": "Phew!\n\nYou made it! The morning peak is pretty bad, but it can get worse!",
-      "nextLevel": "level3"
+      "nextLevel": "level3",
+      "music": "Deuces.mp3"
     }
 }

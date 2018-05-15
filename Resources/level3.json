@@ -143,8 +143,9 @@
       "station": "Croy",
       "startTime": "17:25",
       "endTime": "15:00",
-      "story": "Good Evening!\n\nThere's been a fault with somewhere affecting all soundbound trains, for the time being you'll only have trains heading north.\n\nOnce the fault is fixed, you may see an influx of already late and delayed trains, make sure you don't keep them waiting any longer!\n\nSome services may want into the platform before the next is ready to depart.",
+      "story": "Good Evening!\n\nThere's been a fault with somewhere affecting all southbound trains, for the time being you'll only have trains heading north.\n\nOnce the fault is fixed, you may see an influx of already late and delayed trains, make sure you don't keep them waiting any longer!\n\nSome services may want into the platform before the next is ready to depart.",
       "winScreen": "A lot of late services there!\n\nAt least the fault was fixed. Congratulations, time for you to graduate to a larger station!",
-      "nextLevel": "level4"
+      "nextLevel": "level4",
+      "music": "Rainbows.mp3"
     }
 }

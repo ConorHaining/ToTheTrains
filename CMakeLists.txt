@@ -158,6 +158,8 @@ set(GAME_SRC
         ${PLATFORM_SPECIFIC_SRC}
         Classes/AppDelegate.cpp
         Classes/StationScene.cpp
+        Classes/TitleScene.cpp
+        Classes/Menu.cpp
         Classes/EntityInterface.cpp
         Classes/EntityManger.cpp
         Classes/ComponentInterface.cpp
@@ -179,9 +181,11 @@ set(GAME_SRC
         Classes/Entities/GameClock.cpp
         Classes/Entities/ScoreEntity.cpp
         Classes/Entities/WarningSymbol.cpp
+        Classes/Entities/GameStory.cpp
         Classes/Systems/StationRenderSystem.cpp
         Classes/Systems/GameTimeSystem.cpp
         Classes/Systems/TrainManagementSystem.cpp
+        Classes/Systems/LevelCreationSystem.cpp
         Classes/Systems/ScoreSystem.cpp
         )
 
@@ -189,6 +193,8 @@ set(GAME_HEADERS
         ${PLATFORM_SPECIFIC_HEADERS}
         Classes/AppDelegate.h
         Classes/StationScene.h
+        Classes/TitleScene.h
+        Classes/Menu.h
         Classes/EntityInterface.h
         Classes/EntityManger.h
         Classes/ComponentInterface.h
@@ -210,10 +216,13 @@ set(GAME_HEADERS
         Classes/Entities/GameClock.h
         Classes/Entities/ScoreEntityck.h
         Classes/Entities/WarningSymbol.h
+        Classes/Entities/GameStory.h
         Classes/Systems/StationRenderSystem.h
         Classes/Systems/GameTimeSystem.h
         Classes/Systems/TrainManagementSystem.h
+        Classes/Systems/LevelCreationSystem.h
         Classes/Systems/ScoreSystem.h
+        Classes/Systems/GameStorySystem.h
         )
 
 # add the executable

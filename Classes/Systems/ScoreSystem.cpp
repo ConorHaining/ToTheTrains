@@ -19,9 +19,9 @@ void ScoreSystem::updateScore(Time *currentTime, Time departureTime) {
         score = 0;
     } else {
         double p = pow(difference, 2);
-        double q = 0.25 * p;
+        double q = 8 * p;
         double t = 100 - q;
-        score = (int)round(t);
+        score = abs((int)round(t));
 
     }
 

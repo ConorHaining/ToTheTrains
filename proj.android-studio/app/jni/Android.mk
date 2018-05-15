@@ -14,6 +14,8 @@ LOCAL_MODULE_FILENAME := libMyGame
 LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/AppDelegate.cpp \
                    $(LOCAL_PATH)/../../../Classes/StationScene.cpp \
+                   $(LOCAL_PATH)/../../../Classes/TitleScene.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Menu.cpp \
                    $(LOCAL_PATH)/../../../Classes/EntityInterface.cpp \
                    $(LOCAL_PATH)/../../../Classes/EntityManager.cpp \
                    $(LOCAL_PATH)/../../../Classes/ComponentInterface.cpp \
@@ -36,10 +38,13 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/GameClock.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/WarningSymbol.cpp \
                    $(LOCAL_PATH)/../../../Classes/Entities/ScoreEntity.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Entities/GameStory.cpp \
                    $(LOCAL_PATH)/../../../Classes/Systems/StationRenderSystem.cpp \
                    $(LOCAL_PATH)/../../../Classes/Systems/TrainManagementSystem.cpp \
                    $(LOCAL_PATH)/../../../Classes/Systems/GameTimeSystem.cpp \
                    $(LOCAL_PATH)/../../../Classes/Systems/ScoreSystem.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Systems/LevelCreationSystem.cpp \
+                   $(LOCAL_PATH)/../../../Classes/Systems/GameStorySystem.cpp \
                    $(LOCAL_PATH)/../../../Classes/include/*
 
 
