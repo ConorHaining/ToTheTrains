@@ -1,104 +1,59 @@
 {
-	"timetable": [
+	"timetable": [    
+    {
+      "arrivalTime": "17:26",
+      "departureTime": "17:36",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "17:40",
+      "departureTime": "17:50",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "17:54",
+      "departureTime": "18:04",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "18:07",
+      "departureTime": "18:16",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "17:19",
+      "departureTime": "17:28",
+      "platform": "1"
+    },
     {
       "arrivalTime": "17:25",
-      "departureTime": "17:32",
+      "departureTime": "17:34",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "17:31",
+      "departureTime": "17:40",
       "platform": "1"
     },
     {
       "arrivalTime": "17:34",
-      "departureTime": "17:41",
+      "departureTime": "17:42",
       "platform": "1"
     },
     {
-      "arrivalTime": "17:44",
-      "departureTime": "17:51",
-      "platform": "1"
-    },    
-    {
-      "arrivalTime": "17:50",
-      "departureTime": "17:57",
-      "platform": "1"
-    },    
-    {
-      "arrivalTime": "17:59",
-      "departureTime": "18:06",
-      "platform": "1"
-    },        
-    {
-      "arrivalTime": "18:07",
-      "departureTime": "18:14",
-      "platform": "1"
-    },        
-    {
-      "arrivalTime": "18:10",
-      "departureTime": "18:17",
+      "arrivalTime": "17:37",
+      "departureTime": "17:45",
       "platform": "2"
-    },            
+    },
     {
-      "arrivalTime": "18:16",
-      "departureTime": "18:24",
+      "arrivalTime": "17:45",
+      "departureTime": "17:53",
       "platform": "1"
-    },        
+    },
     {
-      "arrivalTime": "18:19",
-      "departureTime": "18:26",
+      "arrivalTime": "17:46",
+      "departureTime": "17:56",
       "platform": "2"
-    },        
-    {
-      "arrivalTime": "18:24",
-      "departureTime": "18:31",
-      "platform": "2"
-    },        
-    {
-      "arrivalTime": "18:28",
-      "departureTime": "18:36",
-      "platform": "1"
-    },        
-    {
-      "arrivalTime": "18:32",
-      "departureTime": "18:39",
-      "platform": "2"
-    },        
-    {
-      "arrivalTime": "18:39",
-      "departureTime": "18:46",
-      "platform": "1"
-    },        
-    {
-      "arrivalTime": "18:42",
-      "departureTime": "18:49",
-      "platform": "2"
-    },        
-    {
-      "arrivalTime": "18:47",
-      "departureTime": "18:53",
-      "platform": "1"
-    },        
-    {
-      "arrivalTime": "18:47",
-      "departureTime": "18:53",
-      "platform": "2"
-    },        
-    {
-      "arrivalTime": "18:53",
-      "departureTime": "19:00",
-      "platform": "2"
-    },        
-    {
-      "arrivalTime": "18:55",
-      "departureTime": "19:02",
-      "platform": "1"
-    },        
-    {
-      "arrivalTime": "19:02",
-      "departureTime": "19:09",
-      "platform": "2"
-    },        
-    {
-      "arrivalTime": "19:05",
-      "departureTime": "19:12",
-      "platform": "1"
     }
 	],
 	"platforms": {

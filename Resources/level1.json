@@ -6,18 +6,29 @@
       "platform": "1"
     },
     {
-      "arrivalTime": "12:18",
-      "departureTime": "12:28",
-      "platform": "1"
+      "arrivalTime": "12:14",
+      "departureTime": "12:24",
+      "platform": "2"
     },
+
     {
-      "arrivalTime": "12:31",
-      "departureTime": "12:41",
+      "arrivalTime": "12:24",
+      "departureTime": "12:34",
+      "platform": "1"
+    }, 
+    {
+      "arrivalTime": "12:29",
+      "departureTime": "12:39",
       "platform": "2"
     },
     {
-      "arrivalTime": "12:45",
-      "departureTime": "12:55",
+      "arrivalTime": "12:39",
+      "departureTime": "12:49",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "12:54",
+      "departureTime": "13:04",
       "platform": "1"
     },
     {
@@ -26,30 +37,45 @@
       "platform": "2"
     },
     {
-      "arrivalTime": "13:16",
-      "departureTime": "13:26",
+      "arrivalTime": "13:09",
+      "departureTime": "13:19",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "13:13",
+      "departureTime": "13:23",
       "platform": "2"
     },
     {
-      "arrivalTime": "13:26",
-      "departureTime": "13:36",
-      "platform": "1"
-    },    
-    {
-      "arrivalTime": "13:39",
-      "departureTime": "13:49",
+      "arrivalTime": "13:24",
+      "departureTime": "13:34",
       "platform": "1"
     },
     {
-      "arrivalTime": "13:45",
-      "departureTime": "13:55",
+      "arrivalTime": "13:27",
+      "departureTime": "13:37",
       "platform": "2"
     },
     {
-      "arrivalTime": "13:59",
-      "departureTime": "14:09",
+      "arrivalTime": "13:40",
+      "departureTime": "13:50",
       "platform": "1"
-    }  
+    },
+    {
+      "arrivalTime": "13:40",
+      "departureTime": "13:50",
+      "platform": "2"
+    },
+    {
+      "arrivalTime": "13:53",
+      "departureTime": "14:03",
+      "platform": "1"
+    },
+    {
+      "arrivalTime": "13:55",
+      "departureTime": "13:05",
+      "platform": "2"
+    }
     
 	],
 	"platforms": {
